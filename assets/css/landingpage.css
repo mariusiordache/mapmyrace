@@ -1,0 +1,62 @@
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0; font-family: Arial; background: url(/assets/images/map.jpg); }
+#map-canvas { position: fixed!important; top:0; left: 0; right: 0; bottom: 0px; }
+#options { position: fixed; top: 30%; left: 20%; right: 20%; }
+#options li { float:left; margin: 2px; list-style: none; }
+#options li a { border:1px solid #CCC; padding: 10px; font-size: 20px; text-decoration: none; color: #666; }
+.box { background: rgba(255,255,255, 0.5); padding: 5px 10px; width: 150px;  margin-bottom: 5px; font-size: 13px; color:#999; float: right; clear: right; }
+.box span { color: #333; float: right; }
+.box span.label { color: #666; font-weight: normal; }
+.box span.label .glyphicon { float: left; margin: 0px 5px 0 20px; }
+.box span.value { font-size: 30px; clear: right; }
+
+#play-controls { background: rgba(255,255,255,0.3); position: fixed; bottom: 0px; left: 0px; right: 0px; height: 60px; color: #FFF; 
+                 border-top: 2px solid #F0F0F0;
+}
+
+#play-controls a { margin: 9px 5px; float:left; background: #F0F0F0; border-radius: 25px; color: #333; height: 38px; width: 40px; font-size: 18px; line-height: 40px; text-align: center; text-decoration: none; 
+                   -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+                   -moz-box-shadow:    1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+                   box-shadow:         1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+#play-controls #speed-controls a { font-size: 13px; }
+#play-controls a.active { color: red; background: #F0F0F0; }
+
+#play-controls .pull-left { float: left; width: 45%; }
+#play-controls .pull-left a { float: right; }
+#play-controls .pull-right { float: right; width: 45%; }
+#play-controls .pull-right a.menu { float: right; margin-right: 20px; color: red; }
+
+#app { position: fixed; background: rgba(255,255,255,0.8); top:0; left: 0; right: 0; bottom: 0; }
+.container { width: 1024px; margin: 100px auto 0; }
+
+
+.uploadifive-button {
+    float: left;
+    margin-right: 10px;
+}
+#queue {
+    overflow: auto;
+    margin-bottom: 10px;
+    padding: 0 3px 3px;
+}
+.login-wrapper{
+    margin-left: -15px;
+}
+.login-wrapper, .register-wrapper{
+    background-color: #fff;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    height: 280px;
+}
+.login-wrapper h2, .register-wrapper h2{
+    margin-top: 0;
+}
+input.error{
+    border: 1px solid red;
+}
+.user-header {
+    height: 215px;
+}

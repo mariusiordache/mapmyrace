@@ -9,11 +9,6 @@ $(document).ready(function () {
         console.log(selection);
         selection.currentTarget.style.color = '#585858';
     });
-
-    $('.logout').click(function (e) {
-        e.preventDefault();
-        $("#logOut").modal('show');
-    });
 });
 function buttonReset(selector) {
     var el = $(selector);
@@ -76,7 +71,7 @@ function resetSelectAll() {
 
 requirejs(["socketio"], function (io) {
 
-    
+
     if (typeof USER_DATA !== "undefined") {
         var socket = io.connect(PAGE_DATA.socketio.domain + ":" + PAGE_DATA.socketio.port);
 

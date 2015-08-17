@@ -1,4 +1,4 @@
-{include file="web/dashboardV2/structure/user-profile-header.tpl"}
+{include file="web/includes/user-profile-header.tpl"}
 
 <main id="content" role="main" >
     <div class="container-fluid">
@@ -12,7 +12,7 @@
         </div>
         {if $success}
             <div class="email-not-confirmed">Password was changed!  <img class="pull-right close-message" src="/assets/dashboardv2/close_message.svg" /></div>
-        {/if}
+            {/if}
         <div class='name-status'>
             <h3 data-user="name">{$user.name}</h3>
             <p>
@@ -34,11 +34,11 @@
                     <form>
                         <p>
                             <span class="fake-input" data-user="name">{$user.name}</span>
-                            <input class="form-control clean-input" name="name" value="{$user.name}" /><img class="edit-input" src="/assets/dashboardv2/edit.svg">
+                            <input class="form-control clean-input" name="name" value="{$user.name}" /><img class="edit-input" src="/assets/images/edit.svg">
                         </p>
                         <p>
                             <span class="fake-input" data-user="email">{$user.email}</span>
-                            <input class="form-control clean-input" name="email" value="{$user.email}" /><img class="edit-input" src="/assets/dashboardv2/edit.svg">
+                            <input class="form-control clean-input" name="email" value="{$user.email}" /><img class="edit-input" src="/assets/images/edit.svg">
                         </p>
                     </form>
                 </div>
@@ -106,4 +106,3 @@
 
     {/literal}
 </main>
-{include file="backbone/dashboardv2/logout.tpl"}

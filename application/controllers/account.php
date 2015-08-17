@@ -26,7 +26,7 @@ class account extends member_area {
         $this->bootstrap->setup_fileupload();
         $this->set_template_var('success', $this->input->get('success', true));
         $this->assets->add_css('css/user-profile.css');
-        $this->assets->add_js('app/js/user-profile.js');
+        $this->assets->add_js('js/user-profile.js');
         $this->assets->add_js('js/common.js');
     }
 

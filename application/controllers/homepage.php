@@ -13,10 +13,7 @@ class homepage extends main_controller {
             redirect('/dashboard');
         }
 
-        redirect('/user/login');
+        redirect('/landingpage');
     }
 
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

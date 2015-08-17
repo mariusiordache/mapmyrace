@@ -41,3 +41,44 @@ var login = {
 };
 
 login.setup();
+
+$(".login-form").validate();
+$(".login-btn").click(function () {
+    $.post("/user/post_login", $('.login-form').serialize(), function (data) {
+        if (data.success === true) {
+            window.location.replace(data.goback);
+        } else {
+            $('.login-form div.error').removeClass('error');
+            $('.error-message').empty();
+            $.each(data.errors, function (e, i) {
+                var $target = $('.login-form').find('input[name="' + e + '"]');
+                $target.addClass('error');
+            });
+        }
+    });
+});
+$('.login-form input').keypress(function (e) {
+    if (e.which === 13) {
+        $(".login-btn").trigger('click');
+    }
+});
+$('.register-form input').keypress(function (e) {
+    if (e.which === 13) {
+        $(".create-account").trigger('click');
+    }
+});
+$(".create-account").click(function () {
+    $.post("/user/post_register", $('.register-form input').serialize(), function (data) {
+        if (data.success === true) {
+            location.reload();
+        } else {
+            $('.register-form div.error').removeClass('error');
+            $('.error-message').empty();
+            $.each(data.errors, function (e, i) {
+                var $target = $('.register-form input[name=' + e + ']');
+                $target.addClass('error');
+            });
+        }
+    }, "JSON");
+
+});

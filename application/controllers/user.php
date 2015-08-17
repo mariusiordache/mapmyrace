@@ -66,11 +66,8 @@ class user extends main_controller {
         $existingEmail = $this->user_collection->get_one(array('email' => $data['email']));
 
 
-        if (empty($data['first_name'])) {
-            throw new AjaxException(array("first_name" => "The first name is mandatory!"));
-        }
-        if (empty($data['last_name'])) {
-            throw new AjaxException(array("last_name" => "The last name is mandatory!"));
+        if (empty($data['username'])) {
+            throw new AjaxException(array("username" => "The username is mandatory!"));
         }
         if (empty($data['email'])) {
             throw new AjaxException(array("email" => "The e-mail is mandatory!"));
@@ -93,7 +90,7 @@ class user extends main_controller {
 
 
             $insert_data = [
-                "name" => @$data['first_name'] . " " . @$data['last_name'],
+                "username" => $data['username'],
                 "password" => $data['password'],
                 "email" => $data['email'],
                 "hash" => sha1($unique_id)
@@ -105,11 +102,11 @@ class user extends main_controller {
         $login_result = $this->current_user->login($data);
         $user_data['data']['id'] = $login_result['user']['id'];
 
-        $result_email = $this->current_user->triggerEmailNotification(
-                $user_data['data'], "Redraw.io welcomes you!", "Hi there! <br/> Thank you for taking an interest into redraw.io.  We've worked very hard to be the world's first web-based platform for theme creation across multiple apps and devices. Hope you'll enjoy customizing your apps! Drop us a line anytime or just swing by the office, we're fun to hang out - free drinks, cool artwork on the walls and we do have a gaming area filled with PS and XBox games! <br/><br/>
-
-Just click the link below to confirm your account and you'll be well on your way to creating awesome native and custom themes!", "user/confirm_user/" . $user_data['data']['hash']
-        );
+//        $result_email = $this->current_user->triggerEmailNotification(
+//                $user_data['data'], "Redraw.io welcomes you!", "Hi there! <br/> Thank you for taking an interest into redraw.io.  We've worked very hard to be the world's first web-based platform for theme creation across multiple apps and devices. Hope you'll enjoy customizing your apps! Drop us a line anytime or just swing by the office, we're fun to hang out - free drinks, cool artwork on the walls and we do have a gaming area filled with PS and XBox games! <br/><br/>
+//
+//Just click the link below to confirm your account and you'll be well on your way to creating awesome native and custom themes!", "user/confirm_user/" . $user_data['data']['hash']
+//        );
         $this->show_ajax($login_result);
     }
 

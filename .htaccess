@@ -28,8 +28,8 @@ RewriteBase /
 RewriteRule ^(homepage(/index)?|index(\.php)?)/?$ / [L,R=301]
 RewriteRule ^(.*)/index/?$ $1 [L,R=301]
 
-RewriteCond %{DOCUMENT_ROOT}/assets/store_theme_photos/$1/$2/$3 !-f
-RewriteRule ^assets/store_theme_photos/([0-9]/[0-9]/[0-9])/([0-9]+)/([0-9]+_([a-z]+)_w([0-9]+)\.[a-z]+) index.php/aggregator_tools/resize/$2/$4/$5 [L]
+RewriteCond %{DOCUMENT_ROOT}/user_data/profile/$1/$2/$3 !-f
+RewriteRule ^user_data/profile/([0-9]+)/(w([0-9]+)h([0-9]+))/(([a-z0-9A-Z]+)\.(png|jpg)) index.php/user/resize/$1/$2/$6 [L]
 
 # Removes trailing slashes (prevents SEO duplicate content issues)
 RewriteCond %{REQUEST_FILENAME} !-d

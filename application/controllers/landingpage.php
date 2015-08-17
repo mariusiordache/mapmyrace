@@ -9,6 +9,10 @@ class landingpage extends main_controller {
     /* main_controller loads library bootstrap.php that does most of the initializations */
 
     public function index() {
+        if (get_instance()->current_user->get('login.id') > 0) {
+            redirect('/dashboard');
+        } 
+        
         $this->assets->addDependencies(array(
             'bootstrap',
             'moment',

@@ -22,6 +22,7 @@
         "jquery.event.move": "*",
         "blueimp-tmpl": "*",
         "bootstrap-daterangepicker": "*",
-        "jquery-colorbox": "*"
+        "jquery-colorbox": "*",
+        "typeahead": "*"
     }
 }

@@ -41,8 +41,9 @@ class user extends main_controller {
         $this->assets->add_css('css/login-register.css');
         $this->load->helper('form');
         $this->assets->add_js('js/register.js');
-        if ($this->input->get('goback'))
+        if ($this->input->get('goback')) {
             $this->set_template_var('goback', urldecode($this->input->get('goback')));
+        }
         $this->set_template('web/register.tpl');
         $this->show_page();
     }
@@ -206,6 +207,24 @@ class user extends main_controller {
                 $data, "Email confirmation from {$this->config->item('base_url')}", "sdksdjfh ksjdh sjdh fksjhf ksjfh ksjdfh ", "landingpagev2#reset-forgot-password?hash=" . $user_data['hash']
         );
         $this->show_ajax(["success" => true]);
+    }
+
+    public function resize($user_id, $w, $h, $filename) {
+        $user_path = get_profile_pic_path($user_id) . '/';
+        $thumb_dir = $user_path . "w{$w}h{$h}/";
+
+        if (!is_dir($thumb_dir)) {
+            mkdir($thumb_dir, 0777, true);
+        }
+
+        $imagick = new \Imagick(realpath($user_path . $filename));
+        $imagick->setImageFormat("jpg");
+        $imagick->resizeImage($w, $h, Imagick::FILTER_LANCZOS, 1);
+        $imagick->writeImage($thumb_dir . $filename);
+
+        header("Content-Type: image/jpeg");
+        echo $imagick->getImageBlob();
+        $imagick->destroy();
     }
 
 }

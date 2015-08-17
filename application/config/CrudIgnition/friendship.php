@@ -131,6 +131,42 @@
         'default' => '0',
       ),
     ),
+    'timestamp' => 
+    array (
+      'name' => 'timestamp',
+      'type' => 'timestamp',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'timestamp',
+        'NULL' => false,
+      ),
+    ),
   ),
   'controller' => 'manage_friendships',
 );

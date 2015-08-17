@@ -50,6 +50,7 @@ $route['tags\/(.*)'] = 'tags/$1';
 $route['crons\/(.*)'] = 'crons/$1';
 
 $route['assets/store_theme_photos/([0-9]/[0-9]/[0-9])/([0-9]+)/([0-9]+_([a-z]+)_w([0-9]+)\.[a-z]+)'] = "aggregator_tools/resize/$2/$4/$5";
+$route['user_data/profile/([0-9]+)/(w([0-9]+)h([0-9]+))/(([a-z0-9A-Z]+)\.(png|jpg))'] = "user/resize/$1/$3/$4/$5";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

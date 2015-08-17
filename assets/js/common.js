@@ -69,85 +69,70 @@ function resetSelectAll() {
     }
 }
 
-requirejs(["socketio"], function (io) {
+$(".page-header .menu-toggler").on("click", function (event) {
+    if ($(window).width() < 992) {
+        var menu = $(".page-header .page-header-menu");
+        if (menu.hasClass("page-header-menu-opened")) {
+            menu.slideUp(300);
+            menu.removeClass("page-header-menu-opened");
+        } else {
+            menu.slideDown(300);
+            menu.addClass("page-header-menu-opened");
+        }
+    }
+});
+$('#selectall').click(function () {
+    $('.selectedId').prop('checked', isChecked('selectall'));
+});
 
+$('#selectallRead').click(function () {
+    $('.selectedIdRead').prop('checked', isChecked('selectallRead'));
+});
+if (typeof (PAGE_DATA) != 'undefined' && 'report' in PAGE_DATA && PAGE_DATA.report !== false) {
+    if (typeof (PAGE_DATA.report) == 'string') {
+        var report_html = PAGE_DATA.report;
+    } else {
+        var report_html = '<ul class="page-reports">';
+        for (i in PAGE_DATA.report)
+            report_html += '<li>' + PAGE_DATA.report[i] + '</li>';
+        report_html += '</ul>';
+    }
+    alert(report_html);
+}
 
-    if (typeof USER_DATA !== "undefined") {
-        var socket = io.connect(PAGE_DATA.socketio.domain + ":" + PAGE_DATA.socketio.port);
+$.ajaxSetup({
+    complete: function (xhr, status) {
+        if ($.active === 1) {
+            $('#loading-overlay').hide();
+        }
+    }
+});
 
-        socket.on('notify', function (message) {
-            wwwnotify(message.title, message.body, message.url);
-        });
-
-        socket.emit('register_notify', USER_DATA);
+$('.scroller').each(function () {
+    if ($(this).attr("data-initialized")) {
+        return; // exit
     }
 
-    $(".page-header .menu-toggler").on("click", function (event) {
-        if ($(window).width() < 992) {
-            var menu = $(".page-header .page-header-menu");
-            if (menu.hasClass("page-header-menu-opened")) {
-                menu.slideUp(300);
-                menu.removeClass("page-header-menu-opened");
-            } else {
-                menu.slideDown(300);
-                menu.addClass("page-header-menu-opened");
-            }
-        }
-    });
-    $('#selectall').click(function () {
-        $('.selectedId').prop('checked', isChecked('selectall'));
-    });
+    var height;
 
-    $('#selectallRead').click(function () {
-        $('.selectedIdRead').prop('checked', isChecked('selectallRead'));
-    });
-    if (typeof (PAGE_DATA) != 'undefined' && 'report' in PAGE_DATA && PAGE_DATA.report !== false) {
-        if (typeof (PAGE_DATA.report) == 'string') {
-            var report_html = PAGE_DATA.report;
-        } else {
-            var report_html = '<ul class="page-reports">';
-            for (i in PAGE_DATA.report)
-                report_html += '<li>' + PAGE_DATA.report[i] + '</li>';
-            report_html += '</ul>';
-        }
-        alert(report_html);
+    if ($(this).attr("data-height")) {
+        height = $(this).attr("data-height");
+    } else {
+        height = $(this).css('height');
     }
 
-    $.ajaxSetup({
-        complete: function (xhr, status) {
-            if ($.active === 1) {
-                $('#loading-overlay').hide();
-            }
-        }
-    });
 
-    $('.scroller').each(function () {
-        if ($(this).attr("data-initialized")) {
-            return; // exit
-        }
+    $(this).attr("data-initialized", "1");
+});
 
-        var height;
+$('[data-hover="dropdown"]').not('.hover-initialized').each(function () {
+    $(this).dropdownHover();
+    $(this).addClass('hover-initialized');
+});
 
-        if ($(this).attr("data-height")) {
-            height = $(this).attr("data-height");
-        } else {
-            height = $(this).css('height');
-        }
-
-
-        $(this).attr("data-initialized", "1");
-    });
-
-    $('[data-hover="dropdown"]').not('.hover-initialized').each(function () {
-        $(this).dropdownHover();
-        $(this).addClass('hover-initialized');
-    });
-
-    $('[data-hover="megamenu-dropdown"]').not('.hover-initialized').each(function () {
-        $(this).dropdownHover();
-        $(this).addClass('hover-initialized');
-    });
-
+$('[data-hover="megamenu-dropdown"]').not('.hover-initialized').each(function () {
+    $(this).dropdownHover();
+    $(this).addClass('hover-initialized');
 });
 
 function df(d) {

@@ -6,7 +6,7 @@
         <ul class="list-unstyled main-menu">
             <li class="active"><a href="/dashboard/trasee">Trasee</a></li>
             <li><a href="/dashboard/prieteni">Prieteni</a></li>
-            <li><a href="/dashboard/profil">Profil</a></li>
+            <li><a href="/account/profile">Profil</a></li>
         </ul>
     </div>
     <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 ">

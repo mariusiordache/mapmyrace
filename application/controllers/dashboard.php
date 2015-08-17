@@ -545,7 +545,7 @@ class dashboard extends member_area {
 
     public function prieteni() {
         $this->assets->add_css('css/dashboard.css', false);
-        $this->set_template('web/dashboard/index.tpl');
+        $this->set_template('web/dashboard/prieteni.tpl');
     }
 
     public function profil() {

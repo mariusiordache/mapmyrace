@@ -34,3 +34,7 @@ body > header .main-menu li a:link{
 body > header .main-menu li.active a{
     border-color: #fff;
 }
+
+.trasee-tabs{
+    margin-top: 50px;
+}

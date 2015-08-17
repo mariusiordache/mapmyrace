@@ -1,0 +1,27 @@
+{
+    "name": "tme-financial",
+    "version": "1.0.0",
+    "main": "assets/css/dashboardv2.css",
+    "dependencies": {
+        "bootstrap": "3.*",
+        "underscore": "*",
+        "backbone": "1.1.2",
+        "marionette": "*",
+        "moment": "2.9.0",
+        "jquery": "*",
+        "jqueryui": "*",
+        "socket.io-client": "*",
+        "requirejs": "*",
+        "bootstrap-hover-dropdown": "*",
+        "jquery-validation": "*",
+        "jqueryfileupload": "https://github.com/blueimp/jQuery-File-Upload.git",
+        "jqueryslimscroll": "https://github.com/rochal/jQuery-slimScroll.git",
+        "bootstrap-select": "https://github.com/silviomoreto/bootstrap-select.git",
+        "simpleStorage": "*",
+        "jquery.event.swipe": "*",
+        "jquery.event.move": "*",
+        "blueimp-tmpl": "*",
+        "bootstrap-daterangepicker": "*",
+        "jquery-colorbox": "*"
+    }
+}

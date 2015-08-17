@@ -1,0 +1,9 @@
+Launcher_templates table should have been called something more similar to "template configs". Each launcher_template should have a 1-to-1 relation with the launchers. Due to an error in thinking, the launcher_id field was ignored and the correlation is now based on the folder name from the file system. 
+
+However, there should be a 1-to-1 correlation between launchers from the database and launcher folders in the file system so the logic for the launcher_templates still holds.
+
+The areas in the code where the correlation is done by folder rather than launcher_id are:
+
+- translations
+- launcher templates (and therefore, the whole APK download process)
+

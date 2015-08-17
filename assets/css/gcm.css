@@ -1,0 +1,10 @@
+#app h2 .glyphicon-ok-sign { color: lightgreen; }
+#app h2 .glyphicon-pause { color: red; }
+#app h2 .glyphicon-play { color: green; }
+.btn-group.bootstrap-select { margin-bottom: 0px!important; }
+.form-group label { font-weight: bold; font-size: 13px; }
+#app { position: relative; }
+ul { margin: 5px 0; padding-left: 0; }
+ul li.label { line-height: 20px; }
+.label a { color:#FFF; }
+a.glyphicon { text-decoration: none; }

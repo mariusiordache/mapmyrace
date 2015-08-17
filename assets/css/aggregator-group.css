@@ -1,0 +1,20 @@
+#groups-list { float:right; width:50%; overflow-x:auto; }
+#theme { float: left; width: 560px;  }
+.photos { height: 270px; overflow-x: auto; float: left; width: 100%; }
+.photos ul { width: 2000px; padding: 0px; }
+#app li { list-style: none; }
+#app .store-theme { float: left; width: 150px; }
+#app .store-theme label.title { padding: 5px; background: rgba(0,0,0,0.9); color: #FFF; font-size: 10px; z-index: 2; position: absolute; left: 0px; right: 0px; line-height: 12px; height: 45px; overflow: hidden; display: none; }
+#app .store-theme:hover label.title, #app .store-theme.selected label.title { display: block; }
+#app .store-group { clear:left; float: left; padding: 10px 0px; border-bottom: 1px solid #CCC; width: 100%; }
+#app .store-theme-group { float: left; padding: 0px; }
+.store-theme-photo { float: left; width: 150px; height: 250px; position: relative; overflow: hidden;}
+.store-theme-photo img { width: 150px; position: absolute; margin: auto; top:0; bottom: 0; z-index: 1; }
+#app .store-theme ul { float: left; padding: 0px; position: fixed; bottom: 0px; margin: auto; left: 0px; right: 0px; width: 1200px; z-index: 11; background: #FFF; padding: 20px 0px; }
+#app .form-inline { padding: 10px 0px; border:1px solid #F0F0F0; margin: 10px 0px; border-left: 0; border-right: 0; }
+
+#app #groups-list .store-theme-group { float: none; }
+.groupthemes { position: fixed; bottom: 20px; right: 20px; }
+
+#similar-themes .photos { height: auto; }
+#similar-themes .photos ul { width: 100%; }

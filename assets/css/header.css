@@ -1,0 +1,182 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 20, 2015, 5:27:32 PM
+    Author     : catalin
+*/
+
+
+
+body>header{
+    background-color: #122a3b;
+    box-shadow: 0px 2px 3px #c6c8ca;
+    clear: both;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    box-sizing:border-box;
+}
+.page-logo{
+    clear: both;
+    overflow: visible;
+}
+.page-logo .image-logo{
+    float:left;
+    margin-top:12px;
+    margin-left:40px;
+}
+.page-logo h2, .page-logo h3{
+    float:left;
+    color: #f2f3f5;
+}
+.page-logo h2{
+    font-size:15px;
+    margin: 0 0 5px 12px;
+    font-weight: 300;
+}
+.page-logo h2:last-child{
+    margin-top:32px;
+    margin-left: 0;
+}
+.page-logo h2:first-of-type{
+    font-weight: 500;
+    font-size:19px;
+}
+.user-image{
+    color: #fff;
+    font-size: 18px;
+}
+.user-image > a.logout, .user-image > a.notification{
+    margin-right:20px;
+    color:#fff;
+}
+.user-image > a.logout img, .user-image > a.notification img{
+    width: 15px;
+}
+header#top .nav.navbar-nav{
+    text-align: left !important;
+    float: left !important;
+    margin-left: 3%;
+}
+header#top .nav.navbar-nav > li{
+    float: none;
+    display: inline-block;
+}
+header#top .col-md-8{
+}
+header#top .col-md-8 ul.nav.navbar-nav > li > a{
+    height:75px;
+    line-height:75px;
+    border-bottom:4px solid transparent;
+    padding:0;
+    margin:0 10px;
+    background-color: #122A3B;
+    transition: border 0.15s linear;
+    color: #f2f3f5;
+    font-weight:400;
+    font-size: 14px;
+}
+header#top .col-md-8 ul.nav.navbar-nav.no-hover li.open a{
+    border-color: #fff;
+}
+.open>.dropdown-menu{
+    left: 5px;
+    border-top: none;
+}
+header#top .col-md-8 ul.nav.navbar-nav.no-hover > li > a{
+    line-height: initial;
+    padding-bottom: 10px;
+    padding-top: 50px;
+    margin: 0 5px;
+    font-size: 12px;
+}
+header#top .col-md-8 ul.nav.navbar-nav.no-hover > li > a >img{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom:33px;
+}
+
+header#top .col-md-8 ul.nav.navbar-nav li a:hover,
+header#top .col-md-8 ul.nav.navbar-nav li a.active{
+    border-color: #fff;
+    cursor: pointer;
+}
+
+.clear{
+    clear: both; 
+    overflow: hidden;
+}
+#backupTheme img{
+    width: 19px;
+}
+#showCopyright, .flat-success-btn{
+    background-color: #79bc99;
+    padding: 12px;
+    line-height: 12px;
+    border-radius: 2px;
+    color: #fafcfb;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    right: 3%;
+    text-align: left;
+    text-transform: uppercase;
+    box-shadow: 0 2px 3px #bcbdbf;
+}
+#showCopyright:hover, .flat-success-btn:hover{
+    background-color: #6aae8a;
+    text-decoration: none;
+    color: #fafcfb;
+}
+#showCopyright:active, .flat-success-btn:active{
+    text-decoration: none;
+    background-color: #57a17a;
+    color: #fafcfb;
+}
+.flat-success-btn:focus{
+    color: #fff;
+
+}
+#landscape img{
+    height: 15px;
+    font-size: 12px;
+}
+#showCopyright img{
+    width: 18px;
+    margin-top: -3px;
+    margin-right: 9px;
+}
+#screenshots img{
+    width: 19px;
+}
+#restoreTheme img{
+    width: 22px;
+}
+#testTheme img{
+    width: 12px;
+}
+#undo img, #redo img {
+    width: 17px;
+}
+#redo{
+    margin-left: 0 !important;
+}
+#portrait img{
+    width: 14px;
+}
+#testTheme, #undo, #screenshots, #landscape{
+    margin-left: 32px !important;
+}
+.page-logo a{
+    margin-left: 10px;
+}

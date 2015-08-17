@@ -1,0 +1,140 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 28, 2015, 2:39:45 PM
+    Author     : catalin
+*/
+.user-header{
+    height: 215px;
+}
+.user-header div.col-md-3 .avatar{
+    display: none;
+}
+.profile-center-image{
+    border: 3px solid #fff;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.30);
+    width: 160px;
+    height: 160px;
+    z-index: 1100;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: -65px;
+    background-color: #f0f3f5;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1101;
+}
+
+.profile-center-image img { max-width: 180px; max-height: 180px; }
+
+.profile-center-image input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+  height: 200px;
+  z-index: 99;
+}
+.profile-center-image+.email-not-confirmed{
+    top: 40px;
+}
+.user-header+#content{
+    padding-top: 195px;
+}
+.name-status{
+    border-bottom: 1px solid #e3e3e3;
+    height: 207px;
+    padding-top: 100px;
+    margin-bottom: 110px;
+    text-align: center;
+    color: #5a5a5a;
+}
+.name-status h3{
+    font-size: 18px;
+    font-weight: bold;
+}
+.name-status .roles{
+    font-weight: 300;
+    font-size: 16px;
+}
+.name-status .role-status{
+    color: #4776aa;
+    font-size: 16px;
+    font-weight: 600;
+}
+.form-container{
+    width: 400px;
+    margin: 0 auto;
+    color: #525252;
+    position: relative;
+}
+.form-container p{
+    position: relative;
+    margin-bottom: 45px;
+}
+.form-container p:last-child{
+    margin-bottom: 20px;
+}
+.form-container input+img{
+    width: 10px;
+    position: absolute;
+    right:7px;
+    bottom: 11px;
+    cursor: pointer;
+}
+.fake-input{
+    border-bottom: 1px solid #dadada;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    line-height: 23px;
+    position: absolute;
+}
+.change-password{
+    text-align: left;
+    margin-top: 20px;
+}
+.change-password .flat-primary-btn{
+    margin-left: 0;
+}
+.form-control.clean-input.error{
+    border-color: red;
+}
+#changePasswodModal .modal-dialog{
+    width: 370px;
+}
+#changePasswodModal input{
+    margin-bottom: 30px;
+}
+.profile-body h3{
+    font-size: 24px;
+    font-weight: 400;
+    color: #3e3e3e;
+    margin-bottom: 60px;
+    margin-top: 0px;
+}
+.change-password .flat-success-btn{
+    position: relative;
+    right: inherit;
+}
+.change-password a{
+    display: inline-block;
+    margin: 0 10px;
+}
+#content>.container-fluid{
+    position: relative;
+}
+.user-header .notification+div.dropdown-menu{
+    left: 20px;
+}

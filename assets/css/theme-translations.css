@@ -1,0 +1,11 @@
+#list { list-style: none; margin-top: 40px; padding: 0px; }
+#list li { position: relative; }
+#list li.edit button { margin-top: 10px; }
+#list li h4 { margin-bottom: 10px;  }
+#list li .glyphicon { float: right; margin-left: 20px; text-decoration: none; color: #999999; }
+#list li .glyphicon:hover { color: green; }
+
+#clipboard {
+    height: 200px;       
+    padding: 0px;
+}

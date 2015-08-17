@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "dev-master",
+        "symfony/yaml": "2.3.*"
+    }
+}

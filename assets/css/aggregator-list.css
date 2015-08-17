@@ -1,0 +1,24 @@
+.store-theme {
+	border: 1px solid #CDCDCD;
+	padding: 10px;
+	position: relative;
+	margin-top: 20px;
+        height: 200px; overflow: hidden;
+}
+
+.store-theme:after, .store-theme:before {
+	display: table;
+	content: " ";
+}
+
+.store-theme .loading-overlay { background: rgba(255,255,255, 0.8); color: #444; position: absolute; top:0; left: 0; right: 0; bottom: 0; margin: auto; text-align: center; line-height: 200px; font-size: 40px;  }
+.store-theme .boost { background: #f0ad4e; color:white; width: 20px; height: 20px; border-radius: 10px; position: absolute; top: 0px; left: 0px; line-height: 20px; text-align: center; font-size: 18px; font-weight: bold; }
+.store-theme:after {clear: both;}
+
+.store-theme-photo  {width: 30%; float: left;}
+.store-theme-photo > img{max-width: 100%;}
+
+.store-theme-details {float: left; margin-left: 5%; width: 65%;}
+.store-theme-details > .actions {position: absolute; bottom: 10px; right: 10px;}
+
+#filter-results { position: fixed; bottom: 0px; left: 0px; right: 0px; background: #FFF; color:black; font-size: 13px; font-weight: bold; z-index: 999; border-top:1px solid #CCC; padding: 2px 0px; text-align: center; }

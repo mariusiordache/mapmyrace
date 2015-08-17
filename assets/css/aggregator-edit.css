@@ -1,0 +1,71 @@
+.photo-settings {
+    position: absolute;
+    bottom: 5px;
+    left: 5px; right: 5px; margin: auto;
+    z-index: 10;
+}
+
+h4 { float: left; margin: 0 10px 0 0; }
+.column { float: left; }
+.column.icon img { height: 120px; margin-right: 10px; }
+.theme-header { margin-bottom: 10px; margin-top: 10px; }
+.theme-header .col-lg-12 { padding: 0px; }
+.theme-photo .photo-settings select { display: none; }
+.theme-photo:hover .photo-settings select, 
+.theme-photo .photo-settings select:active, 
+.theme-photo:hover a { display: block; }
+.theme-photo a { position: absolute; z-index: 5; display: none; top: 0px; left: 0px; right: 0px; background: rgba(0,0,0,0.6); color: #FFF;  padding: 40px; text-align: center; bottom: 0px; }
+.theme-photo { position: relative; float: left; margin-right: 5px; }
+.theme-photo > .photo {
+    max-width: 100%;
+    max-height: 300px;
+}
+.screenshots { height: 320px; overflow: auto; display: none; }
+#photos { width: 20000px; }
+#theme-details-form, #theme-details-trigger { background: #F0F0F0; padding: 10px 0px; margin: 10px 0px; }
+#theme-details-trigger { padding: 10px; }
+#tags-form input[type=text] { float: left; width: 150px; }
+#tags-form button { float:left; margin-left: 5px; }
+#tags-form .tag { float: left; padding: 3px 25px 3px 7px; background: #999; border-radius:5px; color:#FFF; list-style: none; position: relative; margin: 0 3px 3px 0; }
+#tags-form ul { float: left; clear: left; padding: 0px; margin: 5px 0 0 0; }
+#tags-form .tag span { float: left; }
+#tags-form .tag a { color: red; text-decoration: none; position: absolute; top:6px; right: 5px; color:#FFF; }
+
+.rating-container {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #e3e3e3;
+    overflow: hidden;
+}
+
+.rating-container:before {
+    content: "";
+}
+
+.rating-container .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fde16d;
+    transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -webkit-transition: all .25s ease-out;
+}
+
+.rating-container .rating-stars:before {
+    content: "";
+    text-shadow: 0 0 1px rgba(0,0,0,0.7);
+}
+
+
+.rating-gly-star {
+    font-family: 'Glyphicons Halflings';
+    padding-left: 2px;
+    font-size: 16px;
+}
+
+

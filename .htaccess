@@ -1,0 +1,55 @@
+Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+Header set Pragma "no-cache"
+
+php_value post_max_size 500M
+php_value max_input_vars 10000
+
+php_value suhosin.perdir pr
+
+php_value upload_max_filesize 500M
+php_value suhosin.post.max_array_depth 100
+php_value suhosin.post.max_array_index_length 128
+php_value suhosin.post.max_name_length 128
+php_value suhosin.post.max_value_length 2000000
+php_value suhosin.post.max_totalname_length 512
+php_value suhosin.post.max_vars 10000
+
+php_value suhosin.request.max_array_depth 100
+php_value suhosin.request.max_array_index_length 128
+php_value suhosin.request.max_name_length 128
+php_value suhosin.request.max_value_length 2000000
+php_value suhosin.request.max_totalname_length 512
+php_value suhosin.request.max_vars 10000
+
+ 
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^(homepage(/index)?|index(\.php)?)/?$ / [L,R=301]
+RewriteRule ^(.*)/index/?$ $1 [L,R=301]
+
+RewriteCond %{DOCUMENT_ROOT}/assets/store_theme_photos/$1/$2/$3 !-f
+RewriteRule ^assets/store_theme_photos/([0-9]/[0-9]/[0-9])/([0-9]+)/([0-9]+_([a-z]+)_w([0-9]+)\.[a-z]+) index.php/aggregator_tools/resize/$2/$4/$5 [L]
+
+# Removes trailing slashes (prevents SEO duplicate content issues)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ $1 [L,R=301]
+
+# Enforce NO www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$
+RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
+RewriteRule ^api/themeuser/register$ theme_api_register.php [L]
+
+# Checks to see if the user is attempting to access a valid file,
+# such as an image or css document, if this isn't true it sends the
+# request to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+# Protect config.yml
+<Files config.yml>
+    Order Allow,Deny
+    Deny from all
+</Files>

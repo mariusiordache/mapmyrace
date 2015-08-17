@@ -1,0 +1,74 @@
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+h2 {font-size: 24px; padding-top: 0; margin-top: 0; margin-bottom:24px;}
+h2 span.highlight {color: #ff0000;}
+
+.checkbox-list {
+    list-style-type: none;    
+    padding: 0 0 0 15px;
+    margin-left: 7px;
+}
+.checkbox-list > li > label {font-weight: normal;}
+
+.select-list {
+    list-style-type: none;
+    border-right: 1px solid #CCC;
+    padding: 0 15px 0px 0px;
+}
+
+.select-list > li {
+    position: relative;
+}
+
+.select-list > li.selected {
+    font-weight: bold;
+}
+
+.select-list > li:hover {
+    color: #FF0000;
+}
+
+.select-list > li > span.name{
+    cursor: pointer;
+    display: inline-block;
+    line-height: 30px;
+}   
+.select-list > li > spanl.name:hover {
+    color: #FF0000;
+}
+
+.select-list > li > span.actions {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+    line-height: 30px;
+    text-align: center;
+}
+.select-list > li:hover > span.actions {
+    display: inline-block;
+}
+.select-list > li > span.actions > a {
+    font-size: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.checkbox-loading {display: none;}
+
+.loading {color: #CDCDCD;}
+.loading input[type="checkbox"] {visibility: hidden}
+.loading .checkbox-loading {display: inline-block;}
+.loading label > .checkbox-loading {margin-left: -20px; margin-right: 5px;}
+
+.editView a.delete{
+    font-size: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #EEE;
+}
+.editView:hover a.delete {
+    color: #0088cc;
+    cursor: pointer;
+}

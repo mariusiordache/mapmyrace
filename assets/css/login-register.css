@@ -1,0 +1,194 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 12, 2015, 1:36:41 PM
+    Author     : catalin
+*/
+/* ----- login ----- */
+ #thanks{
+        position:absolute;
+        top:100px;
+        left:0;
+        right:0;
+    }
+    .logo img{
+        display:block;
+        margin:20px auto;
+    }
+    .login-form{
+        text-align: left;
+        margin: auto;
+        margin-top:130px;
+        min-height:400px;
+        max-height:500px;
+        width:580px;
+        overflow:hidden;
+        box-shadow:none;
+        padding:0px;
+        
+    }
+    .login-form label{
+        color:#666;
+        float:left;
+    }
+    .login-form a{
+        color: #5CCDDE;
+    }
+    .login-form .btn-primary, .register-form .btn-primary{
+        background-color: #5ccdde;
+        border-color: #5ccdde;
+    }
+    .login-form img{
+        display:block;
+        vertical-align: middle;
+        float:left;
+        margin-right:15px;
+    }
+    .checkbox-login{
+        margin-right:10px !important;
+        color:#666;
+        float:left;
+    }
+    .login-subtitle{
+       display:block;
+       color:#5ccdde;
+       font-size:10pt;
+    }
+    .login-form .form-group {
+        margin-bottom: 15px;
+        display: block;
+        clear: both;
+        overflow: hidden;
+        position: relative; 
+       
+    }
+    .login-form legend, .register-form legend{
+        border-bottom: 2px solid #dae0e8;
+        padding-left:10px;
+        padding-bottom: 10px;
+    }
+    .login-form p, .login-form fieldset, .register-form fieldset, .register-form p{
+        padding:10px;
+    }
+    .login-form fieldset, .register-form fieldset{
+        border-bottom: 1px solid #dae0e8;
+    }
+    .login-form sup{
+        color:red;
+    }
+    #thanks{
+        top:50px;
+    }
+    
+    
+    /* ----- register ----- */
+    
+    .logo img{
+        display:block;
+        margin:20px auto;
+    }
+    .center-box{
+        width: 600px !important;
+        max-width: 600px !important;
+    }
+    .register-form{
+        text-align: left;
+        margin: auto;
+        margin-top:130px;
+        min-height:400px;
+        max-height:500px;
+        width:580px;
+        overflow:hidden;
+        box-shadow:none;
+        padding:0;
+        
+    }
+    .register-form label{
+        color:#666;
+    }
+    .register-form img{
+        display:block;
+        vertical-align: middle;
+        float:left;
+        margin-right:15px;
+    }
+    .checkbox-register{
+        margin-right:10px !important;
+        color:#666;
+        float:left;
+    }
+    .register-subtitle{
+       display:block;
+       color:#5ccdde;
+       font-size:10pt;
+    }
+    .register-form .form-group {
+        margin-bottom: 15px;
+        display: block;
+        clear: both;
+        overflow: hidden;
+        position: relative; 
+    }
+    .register-form sup{
+        color:red;
+    }
+    
+
+    /* login register common */
+   .register-form .col-md-8 .glyphicon, .login-form .col-md-8 .glyphicon {
+      position: absolute;
+      padding: 10px;
+      pointer-events: none;
+    }
+
+    /*  */
+    .register-form .col-md-8 .glyphicon, .login-form .col-md-8 .glyphicon  { 
+        right:  20px;
+        border-left:1px solid #ccc;
+    }
+
+    /*   */
+    .register-form .col-md-8 input, .login-form.col-md-8 input  { padding-right:  30px; }
+    .register-form .login-form .btn-primary, .login-form .login-form .btn-primary{
+        background-color:#5ccdde;
+        border:1px solid #5ccdde;
+    }
+    .register-form .login-form a{
+        color:#5ccdde;
+    }
+    
+    
+    
+    .csscheckbox input {
+        position: absolute;
+        opacity: 0;
+        left:0;
+    }
+    .csscheckbox {
+        margin: 1px 7px 0 0;
+        padding: 0px 0;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+    }
+    .csscheckbox span {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        background: rgba(250,250,250,.25);
+        border: 1px solid #dae0e8;
+    }
+    .csscheckbox input:checked + span {
+        background-color: #5ccdde !important;
+    }

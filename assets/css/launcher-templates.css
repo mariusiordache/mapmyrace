@@ -1,0 +1,19 @@
+#list > .launcher-template {
+	padding: 15px 0px;
+	border-bottom: 1px solid #DDD;
+}
+
+.ad-settings {
+	padding: 0px;
+}
+
+.ad-settings li { float: left; margin-right: 5px; padding-right: 5px; border-right: 1px solid #CCC; list-style: none; }
+
+.on {
+	color: #999;
+}
+
+.off {
+	color: #BBB;
+	font-weight: bold;
+}

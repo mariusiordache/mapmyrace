@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 12, 2015, 1:43:15 PM
+    Author     : catalin
+*/
+
+/* view notification */
+
+
+.single-notification-table {
+    width:50%; 
+    margin:40px auto; 
+    border:1px solid #ccc; 
+    box-shadow:2px 3px #ccc; 
+    border-radius: 0 0 5px 0;
+}
+.single-notification-table td{
+    padding:2%;
+    vertical-align: top;  
+}
+
+/* all user notifications */
+
+.select_all_container, .select_all_container_read{
+    position:relative;
+    margin-left:6px;
+    width:102px;
+}
+.select_all_container .btn-group, .select_all_container_read .btn-group{
+    float:right;
+}
+.select_all_container .btn-group .dropdown-menu li, .select_all_container_read .btn-group .dropdown-menu li{
+    cursor:pointer;
+}
+.select_all_container .btn-group .dropdown-menu li:hover, .select_all_container_read .btn-group .dropdown-menu li:hover{
+    color:#002a80;
+}

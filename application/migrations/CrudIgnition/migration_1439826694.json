@@ -1,0 +1,1 @@
+["SHOW TABLES LIKE \"%%dbprefix%%events\"","CREATE TABLE `%%dbprefix%%events` (\n\t`id` INT NOT NULL AUTO_INCREMENT,\n\t`date_created` datetime NOT NULL,\n\t`name` varchar(50) NOT NULL,\n\t`public` boolean DEFAULT '0' NOT NULL,\n\t`owner_id` int NOT NULL,\n\tPRIMARY KEY `id` (`id`)\n) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"]

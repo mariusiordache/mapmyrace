@@ -1,0 +1,6 @@
+["SHOW TABLES LIKE \"%%dbprefix%%friendships\"", "CREATE TABLE `%%dbprefix%%friendships` (\n\t`id` INT NOT NULL AUTO_INCREMENT,\n\t`request_user_id` int NOT NULL,\n\t`target_user_id` int NOT NULL,\n\t`accepted` boolean DEFAULT '0' NOT NULL,\n\tPRIMARY KEY `id` (`id`)\n) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;",
+    "ALTER TABLE  `%%dbprefix%%friendships` ADD UNIQUE (`request_user_id` ,`target_user_id`);",
+    "ALTER TABLE  `%%dbprefix%%friendships` ADD INDEX (  `target_user_id` ) ;",
+    "ALTER TABLE  `%%dbprefix%%friendships` ADD FOREIGN KEY (  `request_user_id` ) REFERENCES  `%%dbprefix%%users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;",
+    "ALTER TABLE  `%%dbprefix%%friendships` ADD FOREIGN KEY (  `target_user_id` ) REFERENCES `%%dbprefix%%users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;"
+]

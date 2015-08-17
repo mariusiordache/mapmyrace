@@ -1,0 +1,8 @@
+["SHOW TABLES LIKE \"%%dbprefix%%event_courses\"", "CREATE TABLE `%%dbprefix%%event_courses` (\n\t`id` INT NOT NULL AUTO_INCREMENT,\n\t`event_id` int NOT NULL,\n\t`course_id` int NOT NULL,\n\tPRIMARY KEY `id` (`id`)\n) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;",
+    "ALTER TABLE  `%%dbprefix%%events` ADD INDEX (  `owner_id` ) ;",
+    "ALTER TABLE  `%%dbprefix%%events` ADD FOREIGN KEY (  `owner_id` ) REFERENCES  `%%dbprefix%%users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;",
+    "ALTER TABLE  `%%dbprefix%%event_courses` ADD UNIQUE (`event_id` ,`course_id`);",
+    "ALTER TABLE  `%%dbprefix%%event_courses` ADD INDEX (  `course_id` ) ;",
+    "ALTER TABLE  `%%dbprefix%%event_courses` ADD FOREIGN KEY (  `event_id` ) REFERENCES  `%%dbprefix%%events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;",
+    "ALTER TABLE  `%%dbprefix%%event_courses` ADD FOREIGN KEY (  `course_id` ) REFERENCES  `%%dbprefix%%courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;"
+]

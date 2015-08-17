@@ -1,0 +1,12 @@
+[
+    "SHOW TABLES LIKE \"%%dbprefix%%courses\"",
+    "DESCRIBE %%dbprefix%%courses", "ALTER TABLE `%%dbprefix%%courses` CHANGE \n\t`id` `id`  INT NOT NULL AUTO_INCREMENT",
+    "ALTER TABLE `%%dbprefix%%courses` CHANGE \n\t`date_created` `date_created`  timestamp DEFAULT NULL NULL",
+    "ALTER TABLE `%%dbprefix%%courses` CHANGE \n\t`duration` `duration`  double NOT NULL",
+    "ALTER TABLE `%%dbprefix%%courses` CHANGE \n\t`length` `length`  double NOT NULL",
+    "ALTER TABLE `%%dbprefix%%courses` CHANGE \n\t`file_id` `file_id`  varchar(32) NOT NULL",
+    "ALTER TABLE `%%dbprefix%%courses` ADD \n\t`user_id` int DEFAULT NULL NULL",
+    "ALTER TABLE  `%%dbprefix%%courses` ADD INDEX (  `user_id` ) ;",
+    "ALTER TABLE  `%%dbprefix%%courses` ADD FOREIGN KEY (  `user_id` ) REFERENCES  `%%dbprefix%%users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;"
+
+]

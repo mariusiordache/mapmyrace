@@ -1,0 +1,1 @@
+["SHOW TABLES LIKE \"%%dbprefix%%courses\"","CREATE TABLE `%%dbprefix%%courses` (\n\t`id` INT NOT NULL AUTO_INCREMENT,\n\t`date_created` timestamp NOT NULL,\n\tPRIMARY KEY `id` (`id`)\n) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;"]

@@ -53,3 +53,21 @@ span.twitter-typeahead {
 }
 .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
   top: 28px !important;
+}
+.tt-menu.tt-open{
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+}
+.tt-menu.tt-open .tt-suggestion img{
+    margin-right: 20px;
+}
+.tt-menu.tt-open .tt-suggestion{
+    line-height: 30px;
+    border-bottom: 1px solid #dadada;
+    padding: 5px 0;
+}
+.tab-content h2{
+    opacity: 0;
+}

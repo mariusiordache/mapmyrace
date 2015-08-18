@@ -19,6 +19,7 @@ class dashboard extends member_area {
     public function friends() {
         $this->assets->add_css('css/dashboard.css', false);
         $this->assets->add_js('js/dashboard/friends.js', false);
+        $this->assets->add_js('bower_components/moment/moment.js', false);
         
         $this->load->model('friendship_collection');
         $this->load->model('user_collection');
@@ -33,8 +34,8 @@ class dashboard extends member_area {
         );
         
         $friends = $friendship_collection->get(array("accepted = 1 AND (request_user_id = {$uid} OR target_user_id = {$uid})"), 'a.timestamp DESC', null, null, $extra);
-        $request_pending = $friendship_collection->get(array("accepted = 0 AND target_user_id = {$uid}"), 'a.timestamp DESC', null, null, $extra);
-        $request_sent = $friendship_collection->get(array("accepted = 0 AND request_user_id = {$uid}"), 'a.timestamp DESC', null, null, $extra);
+        $request_pending = $friendship_collection->get(array("accepted IS NULL AND target_user_id = {$uid}"), 'a.timestamp DESC', null, null, $extra);
+        $request_sent = $friendship_collection->get(array("accepted IS NULL AND request_user_id = {$uid}"), 'a.timestamp DESC', null, null, $extra);
         
         
         $this->set_template_var('friendship', array(

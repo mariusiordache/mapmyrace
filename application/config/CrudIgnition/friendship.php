@@ -103,8 +103,9 @@
       'decimals' => '',
       'data_source' => '',
       'admin_header' => 'on',
-      'default_option' => 'CUSTOM',
+      'default_option' => 'NULL',
       'default_value' => '0',
+      'is_null' => 'on',
       'vgroups' => 
       array (
         0 => 
@@ -127,8 +128,8 @@
       'forge' => 
       array (
         'type' => 'boolean',
-        'NULL' => false,
-        'default' => '0',
+        'NULL' => true,
+        'default' => 'NULL',
       ),
     ),
     'timestamp' => 

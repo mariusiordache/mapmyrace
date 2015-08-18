@@ -209,6 +209,20 @@ class user extends main_controller {
         $this->show_ajax(["success" => true]);
     }
 
+    public function search() {
+        $keyword = $this->db->escape_str($this->input->get('q'));
+        
+        $this->load->decorator('UserDataDecorator');
+        $this->load->model('user_collection');
+        $collection = new UserDataDecorator($this->user_collection, array('thumb' => 30));
+        
+        $this->show_ajax(
+           $collection->get(array("username LIKE '%{$keyword}%' OR name LIKE '%{$keyword}%' OR email LIKE '%{$keyword}%'"), null, null, null, array(
+                'fields' => 'id as user_id'
+            )
+        ));
+    }
+    
     public function resize($user_id, $w, $h, $filename) {
         $user_path = get_profile_pic_path($user_id) . '/';
         $thumb_dir = $user_path . "w{$w}h{$h}/";

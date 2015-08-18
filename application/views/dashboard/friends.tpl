@@ -29,7 +29,7 @@
             <h2>Search Friend</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" name="nume" placeholder="Nume" value="" class="form-control" />
+                    <input type="text" data-provide="typeahead"  name="nume" placeholder="Nume" id="bloodhound" value="" class="form-control typeahead" />
                 </div>
                 <div class="col-md-2">
                     <a class="btn btn-default" href="javascript:;">Add</a>

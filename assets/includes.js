@@ -6,6 +6,13 @@ require.config({
         },
         bootstro: {
             noGlobal: false
+        },
+        typeaheadjs: {
+            deps: [
+                'jquery',
+                'bootstrap'
+            ],
+            exports: '$.fn.typeahead'
         }
     },
     shim: {
@@ -27,6 +34,13 @@ require.config({
                 'jquery'
             ]
         },
+        typeaheadjs: {
+            deps: [
+                'jquery',
+                'bootstrap'
+            ],
+            exports: '$.fn.typeahead'
+        },
         'bootstrap-select': {
             deps: [
                 'bootstrap',
@@ -40,11 +54,6 @@ require.config({
             ]
         },
         jqueryslimscroll: {
-            deps: [
-                'jquery'
-            ]
-        },
-        typeahead: {
             deps: [
                 'jquery'
             ]
@@ -126,7 +135,8 @@ require.config({
         'backbone.babysitter': 'bower_components/backbone.babysitter/lib/backbone.babysitter',
         'backbone.wreqr': 'bower_components/backbone.wreqr/lib/backbone.wreqr',
         'bootstrap-select': 'bower_components/bootstrap-select/dist/js/bootstrap-select',
-        typeahead: 'bower_components/typeahead.js/dist/typeahead.bundle',
+        typeaheadjs: 'bower_components/typeahead.js/dist/typeahead.jquery',
+        bloodhound: 'bower_components/typeahead.js/dist/bloodhound',
         'feather-aviary': 'bower_components/feather-aviary/index',
         'bootstrap-colorpicker': 'bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min',
         simpleStorage: 'bower_components/simpleStorage/simpleStorage',

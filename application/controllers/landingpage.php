@@ -18,9 +18,8 @@ class landingpage extends main_controller {
             'moment',
             'jquery-validation'
         ));
-        $this->assets->add_js('js/main.js', false);
         $this->assets->add_js('js/login.js', false);
-        $this->assets->add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyAmDfFBHTVc_gDC4imtGtMJsveLgxI5N_A&libraries=geometry', false);
+        
         $this->assets->add_css('css/landingpage.css', false);
         $this->set_template('web/landingpage.tpl');
     }

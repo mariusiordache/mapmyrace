@@ -103,3 +103,6 @@
         </div>
     </div>
 </div>
+
+
+{include file='web/includes/footer.tpl'}

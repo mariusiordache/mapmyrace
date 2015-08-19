@@ -1,7 +1,7 @@
 {include file='web/includes/barebones-header.tpl'}
 
 <script type="text/javascript">
-    var FILE_IDS = "{$smarty.get.course_ids}";
+    var FILE_IDS = "{$couse_ids}";
 </script>
 
 

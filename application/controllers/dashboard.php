@@ -121,34 +121,7 @@ class dashboard extends member_area {
         }
     }
     
-    public function get_compare_data() {
-        $course_ids = array_map(function($item) {
-            return (int) $item;
-        }, explode(",", $this->input->get('course_ids')));
-        
-        $this->load->decorator('UserDataDecorator');
-        $this->load->decorator('UserMapMarkerDecorator');
-        $this->load->model('course_collection');
-        
-        $collection = new UserDataDecorator($this->course_collection, array('thumb' => 'marker', 'store_key' => 'user'));
-        $courses = $collection->get(array('id' => $course_ids));
-        
-        $lib_path = $this->config->item('webroot_path') . '/application/libraries/gpx/';
-        require_once $lib_path . 'GpxFile.php';
-        require_once $lib_path . 'FileAlign.php';
-
-        $align = new FileAlign();
-        $dir = $this->config->item('private_data_dir') . '/';
-        
-        foreach ($courses as $course) {
-            $file = new GpxFile($dir . $course['file_id']);
-            $file->setName($course['name']);
-            $align->addFile($file, $course['user']['profile_pic_url']);
-        }
-
-        $this->show_ajax($align->getData());
-        
-    }
+    
     
     public function map() {
         
@@ -158,6 +131,8 @@ class dashboard extends member_area {
         $this->assets->add_css('css/map.css', false);
         $this->assets->add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyAmDfFBHTVc_gDC4imtGtMJsveLgxI5N_A&libraries=geometry', false);
         $this->assets->add_js('js/dashboard/mymap.js', false);
+        
+        $this->set_template_var('couse_ids', $this->input->get('course_ids'));
     }
 
     public function courses() {

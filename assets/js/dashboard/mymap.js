@@ -116,7 +116,7 @@ function loadData() {
     cancelEvent = true;
 
 
-    $.get('/dashboard/get_compare_data', {course_ids: FILE_IDS}, function(resp) {
+    $.get('/events/get_compare_data', {course_ids: FILE_IDS}, function(resp) {
         avatars = resp.avatars;
         data = resp.points;
         currentIndex = 0;

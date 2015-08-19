@@ -30,7 +30,7 @@ class dashboard extends member_area {
             $uid = $this->current_user->get('login.id');
 
 
-            $profile_pic = substr(md5(time()), 0, rand(5, 8));
+            $profile_pic = substr(md5(time() . $_FILES['file']['tmp_name']), 0, rand(5, 8));
             $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 
@@ -82,9 +82,10 @@ class dashboard extends member_area {
         }, explode(",", $this->input->get('course_ids')));
         
         $this->load->decorator('UserDataDecorator');
+        $this->load->decorator('UserMapMarkerDecorator');
         $this->load->model('course_collection');
         
-        $collection = new UserDataDecorator($this->course_collection, array('thumb' => 30, 'store_key' => 'user'));
+        $collection = new UserDataDecorator($this->course_collection, array('thumb' => 'marker', 'store_key' => 'user'));
         $courses = $collection->get(array('id' => $course_ids));
         
         $lib_path = $this->config->item('webroot_path') . '/application/libraries/gpx/';

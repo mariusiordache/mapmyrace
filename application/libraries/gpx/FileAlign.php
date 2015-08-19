@@ -36,7 +36,7 @@ class FileAlign {
 
             $cf = $this->getCacheFile();
             
-            if (file_exists($cf)) {
+            if (0 && file_exists($cf)) {
                 include $cf;
                 return $data;
             }

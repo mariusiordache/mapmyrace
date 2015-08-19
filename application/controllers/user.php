@@ -211,21 +211,51 @@ class user extends main_controller {
 
     public function search() {
         $keyword = $this->db->escape_str($this->input->get('q'));
-        
+
+        $uid = $this->current_user->get('login.id');
         $this->load->decorator('UserDataDecorator');
         $this->load->model('user_collection');
-        $collection = new UserDataDecorator($this->user_collection, array('thumb' => 30));
+        $this->load->model('friendship_collection');
         
+        $ft = $this->friendship_collection->get_data_table();
+        
+        $collection = new UserDataDecorator($this->user_collection, array('thumb' => 30));
+
         $this->show_ajax(
-           $collection->get(array("username LIKE '%{$keyword}%' OR name LIKE '%{$keyword}%' OR email LIKE '%{$keyword}%'"), null, null, null, array(
-                'fields' => 'id as user_id'
+                $collection->get(
+                    array("
+                        (
+                            username LIKE '%{$keyword}%' OR 
+                            name LIKE '%{$keyword}%' OR 
+                            email LIKE '%{$keyword}%'
+                        ) 
+                        AND 
+                        foo.user_id IS NULL"
+                    ), 
+                    null, null, null, array(
+                    'fields' => 'id as user_id',
+                    'sql_join' => "LEFT JOIN (
+                        SELECT request_user_id as user_id FROM {$ft} WHERE target_user_id = {$uid}
+                        UNION 
+                        SELECT target_user_id as user_id FROM {$ft} WHERE request_user_id = {$uid}
+                    ) foo ON foo.user_id = a.id"
             )
         ));
     }
-    
-    public function resize($user_id, $w, $h, $filename) {
+
+    public function resize($user_id, $format, $filename) {
+
+        
+        if (preg_match("@w([0-9]+)h([0-9]+)@", $format, $m)) {
+            $w = $m[1];
+            $h = $m[2];
+        } else {
+            $w = 260;
+            $h = 260;
+        }
+
         $user_path = get_profile_pic_path($user_id) . '/';
-        $thumb_dir = $user_path . "w{$w}h{$h}/";
+        $thumb_dir = $user_path . "{$format}/";
 
         if (!is_dir($thumb_dir)) {
             mkdir($thumb_dir, 0777, true);
@@ -234,11 +264,33 @@ class user extends main_controller {
         $imagick = new \Imagick(realpath($user_path . $filename));
         $imagick->setImageFormat("jpg");
         $imagick->resizeImage($w, $h, Imagick::FILTER_LANCZOS, 1);
-        $imagick->writeImage($thumb_dir . $filename);
 
-        header("Content-Type: image/jpeg");
-        echo $imagick->getImageBlob();
-        $imagick->destroy();
+        if ($format == 'marker') {
+            $marker_path = get_instance()->config->item('webroot_path') . '/assets/marker_overlay.png';
+            $marker = new \Imagick(realpath($marker_path));
+            $marker->cropImage(320, 512, 96, 0);
+
+            $new = new \Imagick();
+            $new->newImage(320, 512, "none");
+            $new->setImageFormat('png');
+            $new->compositeImage($imagick, Imagick::COMPOSITE_DEFAULT, 32, 30);
+            $new->compositeImage($marker, Imagick::COMPOSITE_DEFAULT, 0, 0);
+
+            // Add overlay
+            $new->resizeImage(80, 120, Imagick::FILTER_LANCZOS, 1);
+
+            $new->writeImage($thumb_dir . $filename);
+            
+            header("Content-Type: image/jpeg");
+            echo $new->getImageBlob();
+            
+            $new->destroy();
+        } else {
+            $imagick->writeImage($thumb_dir . $filename);
+            header("Content-Type: image/jpeg");
+            echo $new->getImageBlob();
+            $imagick->destroy();
+        }
     }
 
 }

@@ -6,6 +6,7 @@
 </script>
 
 <script type="backbone/template" id="course_table_view">
+    <td><input type="checkbox" name="course_id[]" value="<%= id %>" /></td>
     <td>#<%= id %></td>
     <td><%= name %></td>
     <td><%= date_created %></td>
@@ -13,6 +14,10 @@
     <td><%= duration_string %></td>
     <td><a href="/dashboard/map?course_ids=<%= id %>" class="view">View</a></td>
     <td><a href="javascript:" class="delete">Delete</a></td>
+</script>
+
+<script type="backbone/template" id="course_empty_view">
+    <td colspan="8" style="text-align:center">Momentan nu ai uploadat nici un traseu</td>
 </script>
 
 <div class="trasee-tabs container">
@@ -38,6 +43,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>&nbsp;</th>
                         <th>ID</th>
                         <th>Nume</th>
                         <th>Data</th>
@@ -52,6 +58,9 @@
             </table>
         </div>
     </div>
+    
+    <button id="compareBtn" class="btn btn-primary" disabled="disabled">Compara</button>
+    <button id="createEventBtn" class="btn btn-danger" disabled="disabled">Create Event</button>
 </div>
 
 

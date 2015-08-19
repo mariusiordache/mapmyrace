@@ -1,7 +1,7 @@
 {include file='web/includes/barebones-header.tpl'}
 
 <script type="text/javascript">
-    var FILE_IDS = {$smarty.get.course_ids|@json_encode};
+    var FILE_IDS = "{$smarty.get.course_ids}";
 </script>
 
 
@@ -35,7 +35,7 @@
 <div id="loader" style="position:fixed; top:30%; left: 0; right: 0; bottom: 0;">
     <div style="margin:auto; width:200px; height: 100px; ">
         <center>
-            <img src="img/loader.gif" /><br />
+            <img src="/assets/images/loader.gif" /><br />
             <h1 style="color:#2B97D6; font-weight: normal;">Loading data ...</h1>
         </center>
     </div>

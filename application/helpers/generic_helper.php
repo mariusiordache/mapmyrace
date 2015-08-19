@@ -472,7 +472,7 @@ function get_profile_pic_url($user, $thumb = false) {
     if (empty($user['profile_pic'])) {
         return '/assets/dashboardv2/user_profile.svg';
     } else {
-        return kmsPathToUrl(get_profile_pic_path($user['id']) . ($thumb ? "w{$thumb}h{$thumb}/" : '') . $user['profile_pic']);
+        return kmsPathToUrl(get_profile_pic_path($user['id']) . ($thumb ? (is_numeric($thumb) ? "w{$thumb}h{$thumb}/" : $thumb . '/') : '') . $user['profile_pic']);
     }
 }
 

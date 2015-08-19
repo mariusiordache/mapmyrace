@@ -29,7 +29,7 @@ RewriteRule ^(homepage(/index)?|index(\.php)?)/?$ / [L,R=301]
 RewriteRule ^(.*)/index/?$ $1 [L,R=301]
 
 RewriteCond %{DOCUMENT_ROOT}/user_data/profile/$1/$2/$3 !-f
-RewriteRule ^user_data/profile/([0-9]+)/(w([0-9]+)h([0-9]+))/(([a-z0-9A-Z]+)\.(png|jpg)) index.php/user/resize/$1/$2/$6 [L]
+RewriteRule ^user_data/profile/([0-9]+)/(w([0-9]+)h([0-9]+)|marker)/(([a-z0-9A-Z]+)\.(png|jpg)) index.php/user/resize/$1/$2/$5 [L]
 
 # Removes trailing slashes (prevents SEO duplicate content issues)
 RewriteCond %{REQUEST_FILENAME} !-d

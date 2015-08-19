@@ -42,15 +42,25 @@ define([
     App.courses = new CourseCollectionView({
         
     });
+
+    App.getSelectedIds = function () {
+        var ids = new Array();
+        App.selectedCourses.each(function (model) {
+            ids.push(model.get('id'));
+        });
+        return ids;
+    };
     
      $('#compareBtn').on('click', function() {
-         var ids = new Array();
-         App.selectedCourses.each(function(model){
-             ids.push(model.get('id'));
-         });
          
-         window.open('dashboard/map?course_ids=' + ids.join(','),'_blank');
-     })
+         
+         window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','),'_blank');
+     });
+     
+     $('#createEventBtn').on('click', function() {
+        $('input[name=course_ids]').val( App.getSelectedIds().join(','));
+        $('#createEventModal').modal('show')
+     });
     
     
     App.addInitializer(function (options) {
@@ -58,9 +68,9 @@ define([
         this.selectedCourses = new CourseCollection();
         this.selectedCourses.bind("change reset add remove", function() {
             if (!App.selectedCourses.length) {
-                $('#compareBtn').attr('disabled', true);
+                $('.btn.dsbl').attr('disabled', true);
             } else {
-                $('#compareBtn').attr('disabled', false);
+                $('.btn.dsbl').attr('disabled', false);
             }
         });
         

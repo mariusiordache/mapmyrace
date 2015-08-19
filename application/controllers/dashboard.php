@@ -22,6 +22,42 @@ class dashboard extends member_area {
         $courses = $this->course_collection->get(array('user_id' => $this->current_user->get('login.id')));
         $this->set_template_var('courses', $courses);
     }
+    
+    public function create_event() {
+        $data = $this->input->post();
+        $course_ids = explode(',', $data['course_ids']);
+        
+        $this->load->model('event_collection');
+        $this->load->model('course_collection');
+        $this->load->model('event_course_collection');
+        
+        $courses = $this->course_collection->get(array('id' => $course_ids));
+        
+        if (empty($courses)) {
+            redirect('/dashboard?msg=' . urlencode("Trebuie sa selectezi niste trasee!"));
+        }
+        
+        if (empty($data['textinput'])) {
+            $data['textinput'] = join(", ", array_map(function($item) { return $item['name']; }, $courses));
+        }
+        
+        $event = $this->event_collection->save(array(
+            'owner_id' => $this->current_user->get('login.id'),
+            'name' => $data['textinput'],
+            'public' => !empty($data['public']),
+            'date_created' => 'NOW()'
+        ));
+        
+        foreach($courses as $course) {
+            $this->event_course_collection->save(array(
+                
+                'event_id' => $event['id'],
+                'course_id' => $course['id']
+            ));
+        }
+        
+        redirect('/event/view/' . $event['id']);
+    }
 
     public function events() {
         $this->assets->addDependencies(array(
@@ -120,8 +156,6 @@ class dashboard extends member_area {
             throw new AjaxException("An error ocurred (100). Please try again later!");
         }
     }
-    
-    
     
     public function map() {
         

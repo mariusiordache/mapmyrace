@@ -59,8 +59,50 @@
         </div>
     </div>
     
-    <button id="compareBtn" class="btn btn-primary" disabled="disabled">Compara</button>
-    <button id="createEventBtn" class="btn btn-danger" disabled="disabled">Create Event</button>
+    <button id="compareBtn" class="btn dsbl btn-primary" disabled="disabled">Compara</button>
+    <button id="createEventBtn" class="btn dsbl btn-danger" disabled="disabled">Create Event</button>
+</div>
+
+
+<!-- Modal checkout-->
+<div id="createEventModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form class="modal-dialog" name="newev" action="/dashboard/create_event" method="POST">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Event Nou</h4>
+                </div>
+                <input type="hidden" name="course_ids" value="" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <form class="form-horizontal">
+                            <fieldset>  
+                                <!-- Text input-->
+                                <div class="form-group"> 
+                                    <div class="col-md-12">
+                                        <div class="col-md-10">
+                                            <label>Nume Eveniment</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                <input type="checkbox" name="public" />
+                                                Public
+                                            </label>
+                                        </div>
+
+                                        <input id="dependencyHash" name="textinput" type="text" placeholder="Nume Eveniment" class="form-control input-md">
+                                    </div>
+                                </div> 
+                            </fieldset>
+                        </form> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Anuleaza</button>
+                    <input type="submit" class="btn btn-primary" value="Adauga" />
+                </div>
+        </div>
+    </form>
 </div>
 
 

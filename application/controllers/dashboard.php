@@ -19,8 +19,53 @@ class dashboard extends member_area {
         $this->assets->add_js('js/common.js');
         
         $this->load->model('course_collection');
-        $courses = $this->course_collection->get(array('uid' => $this->current_user->get('login.id')));
+        $courses = $this->course_collection->get(array('user_id' => $this->current_user->get('login.id')));
         $this->set_template_var('courses', $courses);
+    }
+
+    public function events() {
+        $this->assets->addDependencies(array(
+            'jqueryslimscroll'
+        ));
+        $this->bootstrap->frontend();
+        $this->assets->add_css('css/dashboard.css', false);
+        $this->assets->add_js('js/common.js');
+        
+        $this->load->model('event_collection');
+        $this->load->model('friendship_collection');
+        $this->load->decorator('EventDataDecorator');
+        $this->load->decorator('UserDataDecorator');
+        
+        $ft = $this->friendship_collection->get_data_table();
+        
+        
+        $coll = new UserDataDecorator(new EventDataDecorator($this->event_collection), array('thumb' => 30, 'primary_key' => 'owner_id', 'store_key' => 'user'));
+        $user_id = $this->current_user->get('login.id');
+        
+        $my_events = $coll->get(array('owner_id' => $user_id, 'public' => '0'));
+        $public_events = $coll->get(array('public' => '1'));
+        
+        $friends_events = $coll->get(array("ft1.id IS NOT NULL OR ft2.id IS NOT NULl"), null, null, null, array(
+            'sql_join' => "
+                LEFT JOIN {$ft} ft1 ON ft1.request_user_id = a.owner_id AND ft1.accepted = 1 AND ft1.target_user_id = {$user_id}
+                LEFT JOIN {$ft} ft2 ON ft2.target_user_id = a.owner_id AND ft2.accepted = 1 AND ft2.request_user_id = {$user_id}
+            "
+        ));
+                
+        $this->set_template_var('events', array(
+            'mine' => array(
+                'label' => 'My Events',
+                'data' => $my_events
+            ),
+            'friends' => array(
+                'label' => 'Friends Events',
+                'data' => $friends_events
+            ),
+            'public' => array(
+                'label' => 'Public Events',
+                'data' => $public_events
+            ),
+        ));
     }
 
     public function upload() {

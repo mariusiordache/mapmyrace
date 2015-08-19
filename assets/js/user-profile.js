@@ -13,6 +13,7 @@ define(["/backbone/Model/TmeModel.js"], function (TmeModel) {
         $(this).siblings('.fake-input').hide();
         $(this).siblings('.clean-input').focus();
     });
+    
     $('.form-container').on('click', ".saveInput", function () {
         $('.fake-input').show();
         var obj = new Object();

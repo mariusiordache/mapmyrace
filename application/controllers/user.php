@@ -288,7 +288,7 @@ class user extends main_controller {
         } else {
             $imagick->writeImage($thumb_dir . $filename);
             header("Content-Type: image/jpeg");
-            echo $new->getImageBlob();
+            echo $imagick->getImageBlob();
             $imagick->destroy();
         }
     }

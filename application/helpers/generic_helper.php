@@ -228,9 +228,31 @@ if (!function_exists('get_timezone_offset')) {
 
 }
 
+if (!function_exists('formatInterval')) {
+
+    function formatInterval($time) {
+        $h = floor($time / 3600);
+        $time = $time - $h * 3600;
+        $m = floor($time / 60);
+        $s = $time - $m * 60;
+        $data = array();
+        if (!emptY($h)) {
+            $data[] = "{$h}h";
+        }
+        if (!emptY($m)) {
+            $data[] = "{$m}m";
+        }
+        if (!emptY($s)) {
+            $data[] = "{$s}s";
+        }
+        return join(", ", $data);
+    }
+
+}
+
 if (!function_exists('getTimeSince')) {
 
-    function getTimeSince($time) {
+    function getTimeSince($time, $diff_to = null) {
         if ($time == null) {
             return 'never';
         }
@@ -238,7 +260,8 @@ if (!function_exists('getTimeSince')) {
             $time = strtotime($time);
         }
 
-        $time = time() - $time;
+        $diff_to = $diff_to === null ? time() : $diff_to;
+        $time = abs($diff_to - $time);
 
         if (!$time) {
             return 'now';

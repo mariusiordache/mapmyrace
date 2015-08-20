@@ -56,7 +56,25 @@ class dashboard extends member_area {
             ));
         }
         
-        redirect('/event/view/' . $event['id']);
+        redirect('/events/view/' . $event['id']);
+    }
+    
+    public function add_course_to_event($event_id, $course_id) {
+        $this->load->model('event_course_collection');
+        
+        $this->show_ajax($this->event_course_collection->save(array(
+            'event_id' => $event_id,
+            'course_id' => $course_id
+        )));
+    }
+    
+    public function delete_course_to_event($event_id, $course_id) {
+        $this->load->model('event_course_collection');
+        
+        $this->show_ajax($this->event_course_collection->delete_multiple(array(
+            'event_id' => $event_id,
+            'course_id' => $course_id
+        )));
     }
 
     public function events() {

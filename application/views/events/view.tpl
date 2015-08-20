@@ -2,7 +2,9 @@
 {include file='web/includes/header.tpl'}
 
 <script type="text/javascript">
+    var EVENT = {$event|@json_encode};
     var COURSES = {$courses|@json_encode};
+    var MYCOURSES = {$mycourses|@json_encode};
 </script>
 
 <script type="backbone/template" id="course_table_view">
@@ -13,7 +15,15 @@
     <td><%= date_created %></td>
     <td><%= Math.round(length / 10) / 100 %> km</td>
     <td><%= duration_string %></td>
-    <td><a href="javascript:">Add</a></td>
+    <td><% if (user_id == {$user_id}) { %><a href="javascript:" class="delete">Sterge</a><% } %></td>
+</script>
+
+<script type="backbone/template" id="my_course_table_view">
+    <td><%= name %></td>
+    <td><%= date_created %></td>
+    <td><%= Math.round(length / 10) / 100 %> km</td>
+    <td><%= duration_string %></td>
+    <td><a href="javascript:" class="add">Adauga</a></td>
 </script>
 
 <div class="container">
@@ -34,7 +44,7 @@
         </div>
                 
         <div class="col-lg-8">
-            <a href="/events/map/{$event.id}" class="btn btn-danger" disabled="disabled">Vezi cursa</a>
+            <a href="/events/map/{$event.id}" class="btn btn-danger">Vezi cursa</a>
         </div>
     </div>
         
@@ -62,8 +72,27 @@
     </table>
 
     
-    <button id="compareBtn" class="btn dsbl btn-primary" disabled="disabled">Vezi doar selectate</button>
+    <button id="compareBtn" class="eventCourses btn dsbl btn-primary" disabled="disabled">Vezi doar selectate</button>
     
+    
+    <hr />
+    <h3>Traseele tale</h3>
+    <p>Alege de mai jos unul dintre traseele pe care vrei sa il inscrii in acest eveniment</p>
+    
+    <table id="myCourses" class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Data Traseu</th>
+                <th>Lungime</th>
+                <th>Duration</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
 </div>
 
 

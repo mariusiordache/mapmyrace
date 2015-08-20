@@ -11,8 +11,8 @@ define([
             this.model.set('position', options.childIndex + 1);
         },
         deleteItem: function () {
-            this.model.destroy({wait: true});
-            this.remove();
+            App.mycourses.collection.add(this.model);
+            App.courses.collection.remove(this.model);
         },
         events: {
             'click a.delete': 'deleteItem',
@@ -27,12 +27,21 @@ define([
             }
         }
     });
+    
+    var MyCourseItemView = Marionette.ItemView.extend({
+        tagName: 'tr',
+        template: _.template($('#my_course_table_view').html()),
+        events: {
+            'click a.add': 'addItem'
+        },
+        addItem: function (e) {
+            App.mycourses.collection.remove(this.model);
+            App.courses.collection.add(this.model);
+        }
+    });
 
     
-    
      $('#compareBtn').on('click', function() {
-         
-         
          window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','),'_blank');
      });
      
@@ -59,15 +68,34 @@ define([
     };
     
     App.courses = new CourseCollectionView();
+    App.mycourses = new CourseCollectionView({
+        el: '#myCourses tbody',
+        childView: MyCourseItemView,
+    });
 
     App.addInitializer(function (options) {
 
+        App.mycourses.collection = new CourseCollection(MYCOURSES);
         App.courses.collection = new CourseCollection(COURSES);
+        
+        App.courses.collection.bind('add', function(model){
+            $.post('/dashboard/add_course_to_event/' + EVENT.id + '/' + model.get('id'));
+        });
+        
+        App.courses.collection.bind('remove', function(model){
+            $.post('/dashboard/delete_course_to_event/' + EVENT.id + '/' + model.get('id'));
+        });
+        
         App.courses.collection.comparator = function (model) {
+            return model.get('duration');
+        }
+        
+        App.mycourses.collection.comparator = function (model) {
             return model.get('duration');
         }
 
         App.courses.render();
+        App.mycourses.render();
         
         this.selectedCourses = new CourseCollection();
         this.selectedCourses.bind("change reset add remove", function() {

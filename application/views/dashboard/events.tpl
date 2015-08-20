@@ -2,7 +2,10 @@
 {include file='web/includes/header.tpl'}
 
 
-<div class="trasee-tabs container">
+<div class="container">
+    
+    <h2>Lista Evenimente</h2>
+    <p style="margin-bottom:20px;">Aici poti vedea evenimtele tale, ale prietenilor si cele publice. Daca doresti sa faci un eveniment nou, trebuie sa incepi de la lista cu trasee.</p>
     
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
@@ -41,7 +44,7 @@
                             <td>{if !empty($event.num_courses)}{$event.num_courses}{/if}</td>
                             <td>{if !empty($event.best_time)}{$event.best_time|formatInterval}{/if}</td>
                             <td>{if !empty($event.avg_length)}{$event.avg_length}{/if} km</td>
-                            <td><a href="/events/view/{$event.id}">View</a></td>
+                            <td><a href="/events/view/{$event.id}">Vezi</a></td>
                         </tr>
                     {/foreach}
                     </tbody>

@@ -54,11 +54,28 @@ class events extends main_controller {
                 ));
         
         $courses = $collection->get(array('id' => $event->getCourseIds()));
-        
+        $avg_distance = array_sum(array_map(function($item){
+            return $item['length'];
+        }, $courses)) / count($courses);
+
         $event_data = $eventsCollection->get(array('id' => $event->id));
+
+        $uid = $this->current_user->get('login.id');
+        $myCourses = array();
         
+        if ($uid > 0) {
+            $myCourses = $collection->get(array(
+                'user_id' => $uid,
+                'length <= ' . ($avg_distance * 1.1),
+                'length >= ' . ($avg_distance * 0.9),
+                'id NOT IN (' . join(",", $event->getCourseIds()) . ')'
+            ));
+        }
+
+        $this->set_template_var('user_id', $uid);
         $this->set_template_var('event', array_shift($event_data));
         $this->set_template_var('courses', $courses);
+        $this->set_template_var('mycourses', $myCourses);
     }
     
     public function map($id) {

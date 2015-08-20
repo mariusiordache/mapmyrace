@@ -20,44 +20,44 @@
     <td colspan="8" style="text-align:center">Momentan nu ai uploadat nici un traseu</td>
 </script>
 
-<div class="trasee-tabs container">
+<div class="container">
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#trasee" aria-controls="home" role="tab" data-toggle="tab">Trasee</a></li>
-    </ul>
+    <h2>Trasee</h2>
+    
     <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="trasee">
 
-            <div class="row" id="courses">
-                <div class='profile-center-image'>
-                    <img alt="" src="/assets/images/plus.svg">
+    <div class="row" id="courses">
+        <div class="col-md-6">
+            <p>Aici poti vedea toate traseele tale</p>
+        </div>
+        <div class="col-md-6">
+            <div class='profile-center-image'>
+                <img alt="" src="/assets/images/plus.svg">
 
-                    <form id="fileupload" action="upload.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" multiple="true">
-                    </form>
+                <form id="fileupload" action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" multiple="true">
+                </form>
 
-                </div>
             </div>
-
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>ID</th>
-                        <th>Nume</th>
-                        <th>Data</th>
-                        <th>Lungime</th>
-                        <th>Durata</th>
-                        <th>&nbsp;</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
         </div>
     </div>
+
+    <table class="table table-striped table-hover" id="trasee">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>ID</th>
+                <th>Nume</th>
+                <th>Data</th>
+                <th>Lungime</th>
+                <th>Durata</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
     
     <button id="compareBtn" class="btn dsbl btn-primary" disabled="disabled">Compara</button>
     <button id="createEventBtn" class="btn dsbl btn-danger" disabled="disabled">Create Event</button>

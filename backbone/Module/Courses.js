@@ -90,7 +90,7 @@ define([
         add: function (e, data) {
             var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'gpx';
             if (allowdtypes.indexOf(fileType) < 0) {
-                alert('Invalid file type, aborted');
+                alert('Poti uploada doar fisiere .gpx');
                 return false;
             }
             

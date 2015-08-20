@@ -27,13 +27,38 @@ class events extends main_controller {
         $this->assets->addDependencies(array(
             'jqueryslimscroll'
         ));
+        
         $this->bootstrap->frontend();
         $this->bootstrap->setup_fileupload();
 
         $this->assets->add_css('css/dashboard.css', false);
-        $this->assets->add_js('js/dashboard/courses.js', false);
+        $this->assets->add_js('js/dashboard/event.js', false);
         $this->assets->add_js('js/common.js');
         
+        $this->load->model('course_collection');
+        $this->load->decorator('UserDataDecorator');
+        
+        $eventsCollection = new UserDataDecorator(
+                $this->event_collection, 
+                array(
+                    'primary_key' => 'owner_id', 
+                    'store_key' => 'user',
+                    'thumb' => '40' 
+                ));
+        
+        $collection = new UserDataDecorator(
+                $this->course_collection, 
+                array(
+                    'thumb' => '20', 
+                    'store_key' => 'user'
+                ));
+        
+        $courses = $collection->get(array('id' => $event->getCourseIds()));
+        
+        $event_data = $eventsCollection->get(array('id' => $event->id));
+        
+        $this->set_template_var('event', array_shift($event_data));
+        $this->set_template_var('courses', $courses);
     }
     
     public function map($id) {

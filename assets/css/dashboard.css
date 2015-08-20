@@ -72,18 +72,38 @@ span.twitter-typeahead {
 #courses { position: relative; height: 40px; }
 
 #courses .profile-center-image{
-    border: 3px solid #fff;
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.30);
-    width: 60px;
-    height: 60px;
-    z-index: 1100;
-    position: absolute;
-    right: 0;
-    top: -30px;
     border-radius: 50%;
-    background: #122a3b;
+    width: 66px;
+    height: 66px;
+    line-height: 61px;
+    font-size: 36px;
+    margin-top: 26px;
+    margin-bottom: 70px;
+    background-color: #d44242;
+    box-shadow: 0px 2px 4px #b5b7b9;
+    border: none;
     overflow: hidden;
-    z-index: 1101;
+    position: absolute;
+    top: -70px;
+    right: 0px;
+    display: block;
+}
+
+.nav-tabs .counter {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: #d44242;
+    box-shadow: 0px 2px 4px #b5b7b9;
+    color: white;
+    text-align: center;
+    border: none;
+    display: block;
+    float: right;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 #courses .profile-center-image img { max-width: 20px; max-height: 20px; margin:auto; left:0; right: 0; top:0; bottom: 0; position: absolute; }

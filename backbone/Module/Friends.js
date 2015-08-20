@@ -6,6 +6,11 @@ define([
     'typeaheadjs'
 ], function (Marionette, FriendshipCollection, Friendship, Bloodhound) {
 
+    var NoChildrenView = Marionette.ItemView.extend({
+        tagName: 'tr',
+        template: _.template($('#user_empty_view').html())
+    });
+    
     var UserTableView =  Marionette.ItemView.extend({
         tagName: 'tr',
         deleteItem: function() {
@@ -56,8 +61,9 @@ define([
     });
     
     var UserCollectionView = Marionette.CollectionView.extend({
+        emptyView: NoChildrenView,
         initialize: function() {
-            this.collection.bind('change reset add remove', this.count, this);
+            this.collection.bind('change reset add remove start', this.count, this);
         },
         count: function() {
             var tab_id = this.$el.parents('.tab-pane').attr('id');
@@ -85,18 +91,15 @@ define([
     });
     
     App.addInitializer(function (options) {
-        for (i in FRIENDSHIP.friends) {
-            App.friends.collection.add(new Friendship(FRIENDSHIP.friends[i]));
+        
+        this.friends.collection.reset(FRIENDSHIP.friends);
+        this.pending_requests.collection.reset(FRIENDSHIP.pending);
+        this.sent_requests.collection.reset(FRIENDSHIP.sent);
+
+        this.friends.collection.comparator = function (model) {
+            return model.get('id');
         }
         
-        for (i in FRIENDSHIP.pending) {
-            App.pending_requests.collection.add(new Friendship(FRIENDSHIP.pending[i]));
-        }
-
-        for (i in FRIENDSHIP.sent) {
-            App.sent_requests.collection.add(new Friendship(FRIENDSHIP.sent[i]));
-        }
-
         App.friends.render();
         App.pending_requests.render();
         App.sent_requests.render();
@@ -130,16 +133,21 @@ define([
             ].join('\n'),
             suggestion: function(user){
                 console.log(user)
-                return '<div><img width="30" src="' + user.profile_pic_url + '" /><strong>' + user.email + '</strong></div>'
+                return '<div><img width="30" src="' + user.profile_pic_url + '" /><strong>' + user.email + '</strong><img style="width:25px; float:right; cursor:pointer" src="/assets/images/addfriend.png"></div>'
             }
         }
     }).on('typeahead:selected', function (ev, item) {
+        
+        $('[aria-controls=sent-requests]').trigger('click')
+        
         item.timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
         item.target_user_id = item.user_id;
         item.request_user_id = USER_DATA.id;
         App.sent_requests.collection.create(item, {wait: true});
         
-        $('#bloodhound.typeahead').val('');
+        setTimeout(function() {
+            $('#bloodhound.typeahead').val('');
+        }, 500);
     });
 
     return App;

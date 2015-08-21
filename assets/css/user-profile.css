@@ -1,5 +1,5 @@
 .user-header{
-    height: 215px;
+    height: 75px;
     background-color: #122a3b;
     box-shadow: 0px 2px 3px #c6c8ca;
     clear: both;
@@ -49,7 +49,7 @@
     top: 40px;
 }
 .user-header+#content{
-    padding-top: 195px;
+    padding-top: 65px;
 }
 .name-status{
     border-bottom: 1px solid #e3e3e3;

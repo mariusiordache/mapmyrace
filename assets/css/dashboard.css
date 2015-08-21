@@ -133,3 +133,30 @@ span.twitter-typeahead {
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
 }
+.user-image-wrapper {
+    width: 60%;
+}
+.user-image-wrapper .user-name{
+    height: 75px;
+    line-height: 75px;
+}
+.user-image-wrapper .user-image{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #dadada;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    margin-top: 12.5px;
+    margin-left: 20px;
+}
+.user-image-wrapper .user-image img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    max-width: 50px;
+    max-height: 50px;
+}

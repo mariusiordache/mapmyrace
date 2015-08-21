@@ -11,6 +11,12 @@
         </ul>
     </div>
     <div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 ">
+        <a class="user-image-wrapper pull-left" href="/account/profile" title="">
+            <div class="user-image pull-right">
+                <img src="{$user.profile_pic_url|default}">
+            </div>
+            <div class="user-name pull-right">{$user.name}</div>
+        </a>
         <a class="logout pull-right" href="/user/logout" title="Log out">
             <img src="/assets/images/logout.svg">
         </a>

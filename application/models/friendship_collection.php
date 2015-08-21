@@ -18,7 +18,7 @@ class friendship_collection extends kms_item_collection {
 
             $friendship_collection = new UserDataDecorator($this->friendship_collection, array('thumb' => 30));
             $extra = array(
-                'fields' => "id, timestamp, target_user_id, target_user_id as user_id"
+                'fields' => "id, timestamp, target_user_id, request_user_id as user_id"
             );
 
             $friendships = $friendship_collection->get(array("id" => $data['id']), null, null, null, $extra);

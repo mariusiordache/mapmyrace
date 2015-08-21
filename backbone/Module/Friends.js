@@ -1,10 +1,11 @@
 define([
     'marionette',
+    "socketio",
     '/backbone/Collection/user/FriendshipCollection.js',
     '/backbone/Model/user/Friendship.js',
     'bloodhound',
     'typeaheadjs'
-], function (Marionette, FriendshipCollection, Friendship, Bloodhound) {
+], function (Marionette, io, FriendshipCollection, Friendship, Bloodhound) {
 
     var NoChildrenView = Marionette.ItemView.extend({
         tagName: 'tr',
@@ -72,6 +73,37 @@ define([
     })
     
     var App = new Marionette.Application();
+    App.socket = io.connect(PAGE_DATA.socketio.domain + ":" + PAGE_DATA.socketio.port);
+    
+    App.socket.emit("register_channel", {channel: 'friendship'});
+
+    App.socket.on('friendship', function (data) {
+        switch (data.type) {
+            case "delete":
+                App.friends.collection.remove({id: data.id})
+                App.pending_requests.collection.remove({id: data.id})
+                App.sent_requests.collection.remove({id: data.id})
+                break;
+            case "save":
+                // friendship was accepted
+                if (data.data.accepted == "1") {
+                    var model = App.sent_requests.collection.filter(function(fr) {
+                        return fr.get("id") === parseInt(data.data.id) || fr.get("id") === data.data.id + ""
+                    });
+                    if (model) {
+                        App.sent_requests.collection.remove(model);
+                        App.friends.collection.add(model);
+                    }
+                }
+                
+                if (data.data.target_user_id == USER_DATA.id && data.data.friendship) {
+                    // new friendship received
+                    App.pending_requests.collection.add(data.data.friendship);
+                    $('[aria-controls=pending-requests]').trigger('click');
+                }
+        }
+    });
+     
     App.friends = new UserCollectionView({
         childView: FriendUserTableView,
         el: '#friends tbody',

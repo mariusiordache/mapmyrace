@@ -100,6 +100,11 @@
             </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="sent-requests">
+            
+            <h3>Cereri trimise</h3>
+            <p>Aici este lista cu toate cererile trimise. Poti anula o cerere in orice moment si nu va </p>
+            
+            
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

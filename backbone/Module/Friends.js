@@ -93,6 +93,7 @@ define([
                     if (model) {
                         App.sent_requests.collection.remove(model);
                         App.friends.collection.add(model);
+                        $('[aria-controls=friends]').trigger('click');
                     }
                 }
                 

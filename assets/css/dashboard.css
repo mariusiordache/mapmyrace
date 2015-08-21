@@ -12,6 +12,7 @@ body > header a.logout img{
 body > header .main-menu li{
     float: left;
 }
+body > header#top .logo { color: white; line-height: 75px; font-size: 22px;  }
 body > header .main-menu li a{
     line-height: 72px;
     border-bottom: 3px solid transparent;
@@ -143,7 +144,7 @@ span.twitter-typeahead {
 .user-image-wrapper .user-image{
     width: 50px;
     height: 50px;
-    border: 1px solid #dadada;
+    border: 3px solid #dadada;
     border-radius: 50%;
     overflow: hidden;
     display: block;

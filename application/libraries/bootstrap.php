@@ -48,7 +48,6 @@ class bootstrap {
 
     public function frontend() {
 
-
         $this->_CI->assets->add_js('js/loadingButton.js');
         $this->_CI->assets->add_js('js/common.js');
         

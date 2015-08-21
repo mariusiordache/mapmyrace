@@ -53,10 +53,22 @@ class events extends main_controller {
                     'store_key' => 'user'
                 ));
         
-        $courses = $collection->get(array('id' => $event->getCourseIds()));
-        $avg_distance = array_sum(array_map(function($item){
-            return $item['length'];
-        }, $courses)) / count($courses);
+        $courses = array();
+        $course_ids = $event->getCourseIds();
+        $extra_filters = array();
+        
+        if (!empty($course_ids)) {
+            $courses = $collection->get(array('id' => $event->getCourseIds()));
+            $avg_distance = array_sum(array_map(function($item){
+                return $item['length'];
+            }, $courses)) / count($courses);
+            
+            $extra_filters = array(
+                'length <= ' . ($avg_distance * 1.1),
+                'length >= ' . ($avg_distance * 0.9),
+                'id NOT IN (' . join(",", $course_ids) . ')'
+            );
+        }
 
         $event_data = $eventsCollection->get(array('id' => $event->id));
 
@@ -64,14 +76,12 @@ class events extends main_controller {
         $myCourses = array();
         
         if ($uid > 0) {
-            $myCourses = $collection->get(array(
+            $myCourses = $collection->get(array_merge(array(
                 'user_id' => $uid,
-                'length <= ' . ($avg_distance * 1.1),
-                'length >= ' . ($avg_distance * 0.9),
-                'id NOT IN (' . join(",", $event->getCourseIds()) . ')'
-            ));
+            ), $extra_filters));
         }
 
+        $this->set_template_var('user', $this->current_user->get('login'));
         $this->set_template_var('user_id', $uid);
         $this->set_template_var('event', array_shift($event_data));
         $this->set_template_var('courses', $courses);

@@ -31,8 +31,8 @@
 <div id="app">
 
     <div class="container">
-        <h1>Welcome to My Race Map &trade;</h1>
-        <p>My Race Map &trade; let you compare your traings or races with other friends. Just upload the .GPX file that you can export from  your Garmin Connect &TRADE; or RunKepper&TRADE; accounts.</p>
+        <h1>Welcome to RaceProgress &trade;</h1>
+        <p>RaceProgress &trade; let you compare your traings or races with other friends. Just upload the .GPX file that you can export from  your Garmin Connect &TRADE; or RunKepper&TRADE; accounts.</p>
 
         <ul id="options">
 

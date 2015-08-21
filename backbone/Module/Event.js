@@ -1,8 +1,9 @@
 define([
     'marionette',
+    "socketio",
     '/backbone/Collection/user/CourseCollection.js',
     '/backbone/Model/user/Course.js',
-], function (Marionette, CourseCollection, Course) {
+], function (Marionette, io, CourseCollection, Course) {
 
     var CourseItemView = Marionette.ItemView.extend({
         tagName: 'tr',
@@ -58,7 +59,27 @@ define([
     });
 
     var App = new Marionette.Application();
+    App.socket = io.connect(PAGE_DATA.socketio.domain + ":" + PAGE_DATA.socketio.port);
+    
+    App.socket.emit("register_channel", {channel: 'event'}); // when delete message will be broadcasted generaly
+    App.socket.emit("register_channel", {channel: 'event' + EVENT.id});
 
+    App.socket.on('event' + EVENT.id, function (data) {
+        console.log(data)
+        switch (data.type) {
+            case "save":
+                // new course was added
+                if (data.course) {
+                    App.courses.collection.add(data.course);
+                    App.mycourses.collection.remove({id: data.course.id})
+                }
+            case "delete":
+                console.log(App.courses.collection)
+                App.courses.collection.remove({id: data.course_id})
+                break;
+        }
+    });
+    
     App.getSelectedIds = function () {
         var ids = new Array();
         App.selectedCourses.each(function (model) {

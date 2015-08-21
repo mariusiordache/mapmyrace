@@ -72,6 +72,7 @@ class current_user extends kms_current_user {
 
             
             $user_found['profile_pic_url'] = get_profile_pic_url($user_found);
+            $user_found['profile_pic_url_thumb'] = get_profile_pic_url($user_found, 50);
 
             foreach ($user_found as $key => $value) {
                 $this->set('login.' . $key, $value);

@@ -24,20 +24,34 @@ class dashboard extends member_area {
         $this->set_template_var('courses', $courses);
     }
     
-    public function suggest($course_id, $type) {
+    public function suggest($course_id, $type = null) {
+        
+        $types = array();
         
         switch($type) {
             case 'mine':
-                $func = 'suggestMine';
+                $types['me'] = 'suggestMine';
                 break;
             case 'friends':
-                $func = 'suggestFriends';
+                $types['friends'] = 'suggestFriends';
                 break;
             default:
-                throw new AjaxException("Invalid suggestion type");
+                $types['me'] = 'suggestMine';
+                $types['friends'] = 'suggestFriends';
         }
         $this->load->model('course_collection');
-        $courses = $this->course_collection->$func($course_id);
+        $this->load->decorator('UserDataDecorator');
+        
+        $collection = new UserDataDecorator(
+            $this->course_collection, 
+            array(
+                'thumb' => '20', 
+                'store_key' => 'user'
+            ));
+
+        foreach($types as $type => $func) {
+            $courses[$type] = $collection->$func($course_id);
+        }
 
         $this->show_ajax($courses);
     }

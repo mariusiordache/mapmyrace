@@ -72,6 +72,8 @@ span.twitter-typeahead {
 
 #courses { position: relative; height: 40px; }
 
+tr.disabled td, tr.disabled td a  {  color: #CCC!important; }
+
 #courses .profile-center-image{
     border-radius: 50%;
     width: 66px;

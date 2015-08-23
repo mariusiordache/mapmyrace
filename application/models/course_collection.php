@@ -50,15 +50,12 @@ class course_collection extends kms_item_collection {
         return $this->get(array_merge($filters, array(
             "
                 (
-                    (offset_left <= {$c['offset_left']} AND offset_right >= {$c['offset_left']})
-                        OR 
-                    (offset_left <= {$c['offset_right']} AND offset_right >= {$c['offset_right']})
+                    (offset_left <= {$c['center_x']} AND offset_right >= {$c['center_x']})
+                    
                 )
                     AND
                 (
-                    (offset_top <= {$c['offset_top']} AND offset_bottom >= {$c['offset_top']})
-                        OR 
-                    (offset_top <= {$c['offset_bottom']} AND offset_bottom >= {$c['offset_bottom']})
+                    (offset_top <= {$c['center_y']} AND offset_bottom >= {$c['center_y']})
                 )  
             "
         )), null, null, null, $extra);

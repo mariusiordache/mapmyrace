@@ -6,7 +6,7 @@
 </script>
 
 <script type="backbone/template" id="course_table_view">
-    <td><input type="checkbox" name="course_id[]" value="<%= id %>" /></td>
+    <td><input type="checkbox" <% if (typeof(disabled) != "undefined" && disabled == true) { %>disabled="disabled"<% } %> name="course_id[]" value="<%= id %>" /></td>
     <td>#<%= id %></td>
     <td><%= name %></td>
     <td><%= date_created %></td>
@@ -17,13 +17,28 @@
     <td><a href="javascript:" class="delete">Delete</a></td>
 </script>
 
+<script type="backbone/template" id="suggested_course_table_view">
+    <td><input type="checkbox" name="course_id[]" value="<%= id %>" /></td>
+    <td width="40"><img src="<%= user.profile_pic_url %>" /></td>
+    <td><%= user.username %></td>
+    <td><%= name %></td>
+    <td><%= date_created %></td>
+    <td><%= location %></td>
+    <td><%= Math.round(length / 10) / 100 %> km</td>
+    <td><%= duration_string %></td>
+</script>
+
 <script type="backbone/template" id="course_empty_view">
     <td colspan="8" style="text-align:center">Momentan nu ai uploadat nici un traseu</td>
 </script>
 
+<script type="backbone/template" id="suggested_course_empty_view">
+    <td colspan="8" style="text-align:center">Nu exista nici o sugestie.</td>
+</script>
+
 <div class="container">
     <!-- Nav tabs -->
-    <h2>Trasee</h2>
+    <h2>Traseele tale</h2>
     
     <div class="alert alert-danger" id="myErrorMessage" role="alert" style="display: none;"></div>
     <!-- Tab panes -->
@@ -64,6 +79,28 @@
     
     <button id="compareBtn" class="btn dsbl btn-primary" disabled="disabled">Compara</button>
     <button id="createEventBtn" class="btn dsbl btn-danger" disabled="disabled">Create Event</button>
+    
+    
+    <!-- Nav tabs -->
+    <h2>Traseele prietenilor</h2>
+
+    <p>Alege unul din trasele de mai sus, si aici vei putea vedea traseele ale prietenilor tai din aceeasi zona.</p>
+
+    <table class="table table-striped table-hover" id="friendstrasee">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th colspan="2">User</th>
+                <th>Nume</th>
+                <th>Data</th>
+                <th>Location</th>
+                <th>Lungime</th>
+                <th>Durata</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
 
 

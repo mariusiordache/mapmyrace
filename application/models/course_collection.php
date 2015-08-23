@@ -20,5 +20,48 @@ class course_collection extends kms_item_collection {
         
         return parent::delete($id);
     }
+    
+    public function suggestMine($course_id, $filters = array()) {
+        return $this->suggest($course_id, array_merge($filters, array(
+            'user_id' => $this->current_user->get('login.id')
+        )));
+    }
+    
+    public function suggestFriends($course_id, $filters = array()) {
+        $this->load->model('friendship_collection');
+        $uid = $this->current_user->get('login.id');
+        
+        $fr = $this->friendship_collection->get_data_table();
+        
+        return $this->suggest($course_id, array_merge($filters, array("a.user_id <> {$uid}")), array(
+            'sql_join' => "INNER JOIN (
+                SELECT request_user_id  as user_id FROM {$fr} WHERE target_user_id = {$uid} AND accepted = 1
+                UNION 
+                SELECT target_user_id as user_id FROM {$fr} WHERE request_user_id = {$uid} AND accepted = 1
+            ) f ON f.user_id = a.user_id"
+        ));
+    }
+    
+    protected function suggest($course_id, $filters, $extra = array()) {
+        $c = $this->get_one(array('id' => $course_id));
+        
+        $filters[] = "id <> {$c['id']}";
+        
+        return $this->get(array_merge($filters, array(
+            "
+                (
+                    (offset_left <= {$c['offset_left']} AND offset_right >= {$c['offset_left']})
+                        OR 
+                    (offset_left <= {$c['offset_right']} AND offset_right >= {$c['offset_right']})
+                )
+                    AND
+                (
+                    (offset_top <= {$c['offset_top']} AND offset_bottom >= {$c['offset_top']})
+                        OR 
+                    (offset_top <= {$c['offset_bottom']} AND offset_bottom >= {$c['offset_bottom']})
+                )  
+            "
+        )), null, null, null, $extra);
+    }
 	
 }

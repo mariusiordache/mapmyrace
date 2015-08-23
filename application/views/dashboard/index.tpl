@@ -10,6 +10,7 @@
     <td>#<%= id %></td>
     <td><%= name %></td>
     <td><%= date_created %></td>
+    <td><%= location %></td>
     <td><%= Math.round(length / 10) / 100 %> km</td>
     <td><%= duration_string %></td>
     <td><a href="/dashboard/map?course_ids=<%= id %>" class="view">View</a></td>
@@ -24,6 +25,7 @@
     <!-- Nav tabs -->
     <h2>Trasee</h2>
     
+    <div class="alert alert-danger" id="myErrorMessage" role="alert" style="display: none;"></div>
     <!-- Tab panes -->
 
     <div class="row" id="courses">
@@ -49,6 +51,7 @@
                 <th>ID</th>
                 <th>Nume</th>
                 <th>Data</th>
+                <th>Location</th>
                 <th>Lungime</th>
                 <th>Durata</th>
                 <th>&nbsp;</th>

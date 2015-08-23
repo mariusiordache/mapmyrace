@@ -243,6 +243,295 @@
         'NULL' => false,
       ),
     ),
+    'offset_left' => 
+    array (
+      'name' => 'offset_left',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'offset_right' => 
+    array (
+      'name' => 'offset_right',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'offset_top' => 
+    array (
+      'name' => 'offset_top',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'offset_bottom' => 
+    array (
+      'name' => 'offset_bottom',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'location' => 
+    array (
+      'name' => 'location',
+      'type' => 'varchar',
+      'length' => '150',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'varchar',
+        'constraint' => '150',
+        'NULL' => false,
+      ),
+    ),
+    'center_x' => 
+    array (
+      'name' => 'center_x',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'center_y' => 
+    array (
+      'name' => 'center_y',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
+    'radius' => 
+    array (
+      'name' => 'radius',
+      'type' => 'double',
+      'length' => '',
+      'digits' => '',
+      'decimals' => '',
+      'data_source' => '',
+      'admin_header' => 'on',
+      'default_option' => '',
+      'default_value' => '',
+      'vgroups' => 
+      array (
+        0 => 
+        array (
+          'name' => 'create',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+        1 => 
+        array (
+          'name' => 'update',
+          'state' => '',
+          'rules' => 
+          array (
+          ),
+        ),
+      ),
+      'forge' => 
+      array (
+        'type' => 'double',
+        'NULL' => false,
+      ),
+    ),
   ),
   'controller' => 'manage_courses',
 );

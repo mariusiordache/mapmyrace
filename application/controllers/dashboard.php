@@ -20,9 +20,28 @@ class dashboard extends member_area {
         
         $this->load->model('course_collection');
         $courses = $this->course_collection->get(array('user_id' => $this->current_user->get('login.id')));
+        
         $this->set_template_var('courses', $courses);
     }
     
+    public function suggest($course_id, $type) {
+        
+        switch($type) {
+            case 'mine':
+                $func = 'suggestMine';
+                break;
+            case 'friends':
+                $func = 'suggestFriends';
+                break;
+            default:
+                throw new AjaxException("Invalid suggestion type");
+        }
+        $this->load->model('course_collection');
+        $courses = $this->course_collection->$func($course_id);
+
+        $this->show_ajax($courses);
+    }
+
     public function create_event() {
         $data = $this->input->post();
         $course_ids = explode(',', $data['course_ids']);
@@ -150,22 +169,45 @@ class dashboard extends member_area {
             $data = $fileObj->getData();
             $fileObj->resetT0();
             
+            $rect = $fileObj->getRectangle();
+            
             $last = array_pop($data);
             $name = $fileObj->getName();
+            $city = $fileObj->getLocation();
+            $rad = $fileObj->getRadius();
+            $center = $fileObj->getCenter();
             $name = !empty($name) ? $name : $_FILES['file']['name'];
             
             $fp = array_shift($data);
             
             $this->load->model('course_collection');
             
-            $course = $this->course_collection->save(array(
-                'name' => $name,
+            $filedata = array(
+                'user_id' => $uid,
                 'date_created' => date('Y-m-d H:i:s', $fp->time),
-                'file_id' => $filename,
                 'length' => $last->distance,
                 'duration' => $last->timediff,
-                'user_id' => $uid
-            ));
+                'offset_left' => $rect[0],
+                'offset_top' => $rect[1],
+                'offset_right' => $rect[2],
+                'offset_bottom' => $rect[3],
+                'center_x' => $center[0],
+                'center_y' => $center[1],
+                'radius' => $rad,
+            );
+            
+            // check if already existsl
+            $exists = $this->course_collection->get_one($filedata);
+            
+            if (!empty($exists)) {
+                 throw new AjaxException("Acest traseu este deja uploadat in contul tau!");
+            }
+            
+            $course = $this->course_collection->save(array_merge($filedata, array(
+                'name' => $name,
+                'file_id' => $filename,
+                'location' => $city
+            )));
             
             
             $course['data']['id'] = $course['id'];

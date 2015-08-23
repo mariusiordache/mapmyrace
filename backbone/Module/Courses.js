@@ -9,10 +9,10 @@ define([
         template: _.template($('#course_empty_view').html())
     });
 
-    var CourseItemView =  Marionette.ItemView.extend({
+    var CourseItemView = Marionette.ItemView.extend({
         tagName: 'tr',
         template: _.template($('#course_table_view').html()),
-        deleteItem: function() {
+        deleteItem: function () {
             this.model.destroy({wait: true});
             this.remove();
         },
@@ -20,7 +20,7 @@ define([
             'click a.delete': 'deleteItem',
             'change input[type=checkbox]': 'toggleCourse'
         },
-        toggleCourse: function(e) {
+        toggleCourse: function (e) {
             var checked = $(e.currentTarget).is(':checked');
             if (checked) {
                 App.selectedCourses.add(this.model);
@@ -29,18 +29,17 @@ define([
             }
         }
     });
-    
+
     var CourseCollectionView = Marionette.CollectionView.extend({
         childView: CourseItemView,
         emptyView: NoChildrenView,
         el: '#trasee tbody',
         collection: new CourseCollection()
     });
-    
+
     var App = new Marionette.Application();
-    
+
     App.courses = new CourseCollectionView({
-        
     });
 
     App.getSelectedIds = function () {
@@ -50,37 +49,37 @@ define([
         });
         return ids;
     };
-    
-     $('#compareBtn').on('click', function() {
-         
-         
-         window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','),'_blank');
-     });
-     
-     $('#createEventBtn').on('click', function() {
-        $('input[name=course_ids]').val( App.getSelectedIds().join(','));
+
+    $('#compareBtn').on('click', function () {
+
+
+        window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','), '_blank');
+    });
+
+    $('#createEventBtn').on('click', function () {
+        $('input[name=course_ids]').val(App.getSelectedIds().join(','));
         $('#createEventModal').modal('show')
-     });
-    
-    
+    });
+
+
     App.addInitializer(function (options) {
-        
+
         this.selectedCourses = new CourseCollection();
-        this.selectedCourses.bind("change reset add remove", function() {
+        this.selectedCourses.bind("change reset add remove", function () {
             if (!App.selectedCourses.length) {
                 $('.btn.dsbl').attr('disabled', true);
             } else {
                 $('.btn.dsbl').attr('disabled', false);
             }
         });
-        
+
         for (i in COURSES) {
             App.courses.collection.add(new Course(COURSES[i]));
         }
-        
+
         App.courses.render();
     });
-    
+
     $('#fileupload').fileupload({
         url: '/dashboard/upload',
         autoUpload: true,
@@ -93,7 +92,7 @@ define([
                 alert('Poti uploada doar fisiere .gpx');
                 return false;
             }
-            
+
             $('#loading-overlay').show();
 
             data.process().done(function () {
@@ -103,9 +102,17 @@ define([
         },
         done: function (e, data) {
             var that = $(this).data('blueimp-fileupload') || $(this).data('fileupload');
-            App.courses.collection.add(new Course(data.result.data));
+
+            if (data.result.success == true) {
+                App.courses.collection.add(new Course(data.result.data));
+            } else {
+                $('#myErrorMessage').html(data.result.errors.join("<br />")).show(200);
+                setTimeout(function() {
+                    $('#myErrorMessage').hide(200);
+                }, 2000);
+            }
         }
     });
-   
+
     return App;
 })

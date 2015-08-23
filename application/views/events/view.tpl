@@ -26,9 +26,13 @@
     <td><a href="javascript:" class="add">Adauga</a></td>
 </script>
 
+<script type="backbone/template" id="my_course_empty_table_view">
+    <td colspan="5" style="text-align:center">Nu ai niciun traseu care se incadreaza in acest eveniment</td>
+</script>
+
 <div class="container">
 
-    <h2>{$event.name}</h2>
+    <h2>{$event.name}, {$event.location}</h2>
     
     <div class="row">
         <div class="col-lg-4">
@@ -39,6 +43,7 @@
                 <div class="col-lg-10">
                     Organizator:  {$event.user.username}<br />
                     Data Eveniment: {$event.date_created|date_format:"%B %e, %Y"}
+                    
                 </div>
             </div>
         </div>

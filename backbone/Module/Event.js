@@ -40,16 +40,19 @@ define([
             App.courses.collection.add(this.model);
         }
     });
-
     
-     $('#compareBtn').on('click', function() {
-         window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','),'_blank');
-     });
-     
+    var MyCourseEmptyView = Marionette.ItemView.extend({
+        tagName: 'tr',
+        template: _.template($('#my_course_empty_table_view').html())
+    });
 
+    $('#compareBtn').on('click', function () {
+        window.open('dashboard/map?course_ids=' + App.getSelectedIds().join(','), '_blank');
+    });
 
     var CourseCollectionView = Marionette.CollectionView.extend({
         childView: CourseItemView,
+        emptyView: MyCourseEmptyView,
         el: '#eventCourses tbody',
         childViewOptions: function (model, index) {
             return {

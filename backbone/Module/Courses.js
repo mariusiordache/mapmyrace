@@ -106,6 +106,9 @@ define([
                 course.set('disabled', false);
             });
             
+            App.suggestedCourses.collection = new CourseCollection();
+            App.suggestedCourses.render();
+            
             App.isFirstSuggestion = false;
         }
     };

@@ -12,11 +12,9 @@ class GpxFile extends AbstractDataFile {
     protected function load() {
         $xml = simplexml_load_file($this->file);
 
-        if (!isset($xml->trk->name)) {
-            throw new Exception("Bad file format {$this->file}!");
+        if (isset($xml->trk->name)) {
+            $this->name = (string) $xml->trk->name;
         }
-
-        $this->name = (string) $xml->trk->name;
 
         foreach ($xml->trk->trkseg->trkpt as $p) {
             $attr = $p->attributes();

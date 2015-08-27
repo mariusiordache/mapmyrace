@@ -7,7 +7,9 @@
         <ul class="list-unstyled main-menu">
             <li {if $smarty.server.REQUEST_URI == "/dashboard"}class="active"{/if}><a href="/dashboard">Trasee</a></li>
             <li {if strstr($smarty.server.REQUEST_URI, "events")}class="active"{/if}><a href="/dashboard/events">Evenimente</a></li>
-            <li {if $smarty.server.REQUEST_URI == "/dashboard/friends"}class="active"{/if}><a href="/dashboard/friends">Prieteni</a></li>
+            <li {if $smarty.server.REQUEST_URI == "/dashboard/friends"}class="active"{/if}>
+                <a href="/dashboard/friends">Prieteni  <span class="counter" id="pending-request-counter" {if !$pending_requests_count}style="display:none"{/if}>{$pending_requests_count}</span></a>
+            </li>
             <li {if $smarty.server.REQUEST_URI == "/account/profile"}class="active"{/if}><a href="/account/profile">Profil</a></li>
         </ul>
         {/if}

@@ -26,8 +26,27 @@ class friendship_collection extends kms_item_collection {
                 $data['data']['friendship'] = array_shift($friendships);
             }
         }
-
+        
         $this->client_notifier->sendMessageToChannel("friendship", $data);
+        
+        if ($data['type'] == 'delete') {
+            $this->notifyPendingRequestChange($this->current_user->get('login.id'));
+        }
+        
+        if (in_array($data['type'], array('update', 'save'))) {
+            $this->notifyPendingRequestChange($data['data']['target_user_id']);
+        }
+    }
+    
+    protected function notifyPendingRequestChange($uid) {
+        $this->client_notifier->sendMessageToChannel("friendship{$uid}", array(
+            'type' => 'pending_count', 
+            'count' => $this->getPendingRequestsCount($uid)
+        ));
+    }
+    
+    public function getPendingRequestsCount($uid) {
+        return $this->get_count("*", array("accepted IS NULL AND target_user_id = {$uid}"));
     }
 
 }

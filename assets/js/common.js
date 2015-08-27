@@ -40,6 +40,27 @@ function wwwnotify(Title, Body, url) {
     };
 }
 
+define([
+    "socketio"
+], function (io) {
+    var socket = io.connect(PAGE_DATA.socketio.domain + ":" + PAGE_DATA.socketio.port);
+    var channel_name = 'friendship' + USER_DATA.id;
+    socket.emit("register_channel", {channel: channel_name});
+
+    socket.on(channel_name, function (data) {
+        switch (data.type) {
+            case "pending_count":
+                $('#pending-request-counter').text(data.count);
+                if (data.count > 0) {
+                    $('#pending-request-counter').show();
+                } else {
+                    $('#pending-request-counter').hide();
+                }
+                break;
+        }
+    });
+});
+
 var delay = (function () {
     var timer = 0;
     return function (callback, ms) {

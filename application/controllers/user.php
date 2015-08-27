@@ -230,7 +230,8 @@ class user extends main_controller {
                             email LIKE '%{$keyword}%'
                         ) 
                         AND 
-                        foo.user_id IS NULL"
+                        foo.user_id IS NULL",
+                        "id <> {$uid}"
                     ), 
                     null, null, null, array(
                     'fields' => 'id as user_id',

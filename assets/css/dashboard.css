@@ -168,3 +168,35 @@ tr.disabled td, tr.disabled td a  {  color: #CCC!important; }
     max-width: 50px;
     max-height: 50px;
 }
+
+.email-not-confirmed .top-line{
+    background-color: #d44242;
+    width: 0%;
+    height: 3px;
+}
+.email-not-confirmed{
+    width: 70%;
+    box-shadow: 0 2px 21px rgba(0, 0, 0, 0.30);
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    top: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 9;
+    background-color: #fff;
+    color: #585858;
+    z-index: 1101;
+
+}
+.email-not-confirmed p{
+    padding-left: 60px;
+}
+.email-not-confirmed .pull-right{
+    width: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}

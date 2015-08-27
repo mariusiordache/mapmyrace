@@ -78,6 +78,7 @@ class account extends member_area {
             'jqueryslimscroll'
         ));
         $this->bootstrap->frontend();
+        $this->assets->add_css('css/dashboard.css');
         $this->assets->add_css('css/user-profile.css');
         $this->assets->add_css('css/header.css');
         $this->assets->add_css('css/user-change-password.css');

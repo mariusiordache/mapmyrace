@@ -11,7 +11,7 @@
 
         </div>
         {if $success}
-            <div class="email-not-confirmed">Password was changed!  <img class="pull-right close-message" src="/assets/dashboardv2/close_message.svg" /></div>
+            <div class="email-not-confirmed"><p class="pull-left">Password was changed!</p>  <img class="pull-right close-message" src="/assets/dashboardv2/close_message.svg" /></div>
             {/if}
         <div class='name-status'>
             <h3 data-user="name">{$user.name}</h3>

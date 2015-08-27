@@ -1,4 +1,4 @@
-{include file="web/dashboardV2/structure/user-profile-header.tpl"}
+{include file="web/includes/user-profile-header.tpl"}
 
 <main id="content" role="main" >
     <div class="container-fluid change-password-wrapper">
@@ -23,4 +23,4 @@
         </div>
     </div>
 </main>
-{include file="backbone/dashboardv2/logout.tpl"}
+{include file="account/logout.tpl"}

@@ -57,6 +57,15 @@ class course_collection extends kms_item_collection {
                 (
                     (offset_top <= {$c['center_y']} AND offset_bottom >= {$c['center_y']})
                 )  
+                    AND
+                (
+                    ({$c['offset_left']} <= center_x AND {$c['offset_right']} >= center_x)
+                    
+                )    AND
+                (
+                    ({$c['offset_top']} <= center_y AND {$c['offset_bottom']} >= center_y)
+                    
+                )    
             "
         )), null, null, null, $extra);
     }
